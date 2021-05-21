@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\Mineration_DATA.ETH\AllData.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Mineration_DATA.ETH\ETHPerDay.csv">
           <value>
             <Attribute>
@@ -10,35 +17,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Mineration_DATA.ETH\ETHPerDay.csvFORMATADO.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Mineration_DATA.ETH\HashRateTotal.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Mineration_DATA.ETH\HashRateTotal.csvFORMATADO.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Mineration_DATA.ETH\HashRateTotal_FORMATADO.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Mineration_DATA.ETH\PrecoEther.csv">
+        <entry key="\Mineration_DATA.ETH\NetworkHash_GH_s.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
