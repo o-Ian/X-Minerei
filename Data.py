@@ -26,17 +26,22 @@ ETHPerDay = ETHPerDay.rename(columns={'Value': 'ETHPerDay'})
 NetworkDifficulty = baixar_arquivo('https://etherscan.io/chart/difficulty?output=csv',
                                    'Mineration_DATA.ETH/NetworkDifficulty_TH_s.csv')
 NetworkDifficulty = NetworkDifficulty.rename(columns={'Value': 'Difficulty[TH/s]'})
-
+ETHPriceUSD = baixar_arquivo('https://etherscan.io/chart/etherprice?output=csv',
+                             'Mineration_DATA.ETH/ETHPrice_USD.csv')
+ETHPriceUSD = ETHPriceUSD.rename(columns={'Value': 'ETHPrice_USD'})
 # Creating dataset that group all files
 AllData = pd.DataFrame(ETHPerDay)
+
 AllData['NetworkDifficulty[TH/s]'] = NetworkDifficulty['Difficulty[TH/s]']
+AllData['ETHPriceUSD'] = ETHPriceUSD['ETHPrice_USD']
 
 HashUsuario = float(input('Qual o seu hashrate [Mh/s]? '))
 
 # Calculating profit
-AllData['ETH/hora'] = calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])
-AllData['ETH/dia'] = AllData['ETH/hora'] * 24
+# AllData['ETH/hora'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay']))
+AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
+AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
 
 # Converting dataset to .csv
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')
-print(pd.read_csv('Mineration_DATA.ETH/AllData.csv'))
+print(pd.read_csv('Mineration_DATA.ETH/AllData.csv').head())
