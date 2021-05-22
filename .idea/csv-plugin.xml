@@ -17,13 +17,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Mineration_DATA.ETH\NetworkHash_GH_s.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
       </map>
     </option>
   </component>

@@ -34,13 +34,18 @@ AllData = pd.DataFrame(ETHPerDay)
 
 AllData['NetworkDifficulty[TH/s]'] = NetworkDifficulty['Difficulty[TH/s]']
 AllData['ETHPriceUSD'] = ETHPriceUSD['ETHPrice_USD']
-
-HashUsuario = float(input('Qual o seu hashrate [Mh/s]? '))
+# Input data from user
+HashUsuario = float(input('Qual o seu hashrate [Mh/s]?: '))
+Power = int(input('Qual a potência [W]?: '))
+SuffixMult = 0.001
+PowerCoast = float(input('Qual o tarida de energia [USD]?: '))
 
 # Calculating profit
-# AllData['ETH/hora'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay']))
 AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
 AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
+AllData['USD_Coast'] = Power * SuffixMult * PowerCoast * 24
+AllData['USD_Profit'] = AllData['USD_Revenue'] - AllData['USD_Coast']
+
 
 # Converting dataset to .csv
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')
