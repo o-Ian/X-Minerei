@@ -14,19 +14,29 @@ def baixar_arquivo(url, nome_arquivo):
     return arquivo
 
 
+def calculateProfit(hashrate_proprio, difficulty, blockreward_dia, fees=1):
+    return (((hashrate_proprio*1000000)*(1-((fees)/100)))/(difficulty*1000000000000))*blockreward_dia
+
+
+# Downloading and renaming files
 ETHPerDay = baixar_arquivo('https://etherscan.io/chart/blockreward?output=csv',
                            'Mineration_DATA.ETH/ETHPerDay.csv')
 ETHPerDay = ETHPerDay.rename(columns={'Value': 'ETHPerDay'})
-NetWorkHash = baixar_arquivo('https://etherscan.io/chart/hashrate?output=csv',
-                             'Mineration_DATA.ETH/NetworkHash_GH_s.csv')
-NetWorkHash = NetWorkHash.rename(columns={'Value': 'Hashrate/day[GH/s]'})
+
+NetworkDifficulty = baixar_arquivo('https://etherscan.io/chart/difficulty?output=csv',
+                                   'Mineration_DATA.ETH/NetworkDifficulty_TH_s.csv')
+NetworkDifficulty = NetworkDifficulty.rename(columns={'Value': 'Difficulty[TH/s]'})
+
+# Creating dataset that group all files
 AllData = pd.DataFrame(ETHPerDay)
-AllData['Hashrate/dia[GH/s]'] = NetWorkHash['Hashrate/day[GH/s]']
+AllData['NetworkDifficulty[TH/s]'] = NetworkDifficulty['Difficulty[TH/s]']
 
-HashUsuario = float(input('Qual o seu hashrate [Mh/s]? '))/1000
+HashUsuario = float(input('Qual o seu hashrate [Mh/s]? '))
 
-AllData['HashUsuario_network'] = (HashUsuario / AllData['Hashrate/dia[GH/s]'])
-AllData['HashUsuario_network % '] = (HashUsuario / AllData['Hashrate/dia[GH/s]']) * 100
-AllData['ETHMined'] = AllData['ETHPerDay'] * AllData['HashUsuario_network']
+# Calculating profit
+AllData['ETH/hora'] = calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])
+AllData['ETH/dia'] = AllData['ETH/hora'] * 24
+
+# Converting dataset to .csv
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')
 print(pd.read_csv('Mineration_DATA.ETH/AllData.csv'))
