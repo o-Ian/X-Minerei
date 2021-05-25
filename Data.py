@@ -1,8 +1,10 @@
+import numpy
 import requests
 import csv
 import json
 import pandas as pd
 import os
+import numpy as np
 
 
 def baixar_arquivo(url, nome_arquivo):
@@ -11,10 +13,11 @@ def baixar_arquivo(url, nome_arquivo):
                                                          'Chrome/39.0.2171.95 Safari/537.36'})
     with open(nome_arquivo, 'wb') as novo_arquivo:
         novo_arquivo.write(resultado.content)
-    novo_arquivo = pd.read_csv(nome_arquivo, usecols=['Date(UTC)', 'Value'], index_col='Date(UTC)')
-    arquivo = novo_arquivo.astype('float64')
+    novo_arquivo = pd.read_csv(nome_arquivo, usecols=['Date(UTC)', 'Value'])
+    novo_arquivo['Date(UTC)'] = novo_arquivo['Date(UTC)'].astype('datetime64')
+    novo_arquivo['Value'] = novo_arquivo['Value'].astype('float64')
     novo_arquivo.to_csv(f'{nome_arquivo}')
-    return arquivo
+    return novo_arquivo
 
 
 def conversorjsontocsv(nome_arquivojson):
@@ -22,13 +25,16 @@ def conversorjsontocsv(nome_arquivojson):
         data = json.load(file)
     fname = 'Mineration_DATA.ETH/IPCA.csv'
     with open(fname, 'wt') as file:
-        csv_file = csv.writer(file)
-        csv_file.writerow(['Data', '%IPCA'])
         csv_file = csv.writer(file, lineterminator='\n')
+        csv_file.writerow(['Year', '%IPCA'])
         for item in data:
             csv_file.writerow([item['p'].replace('dezembro', ''), item['v']])
     os.remove(nome_arquivojson)
-    return pd.read_csv(fname)
+    file = pd.read_csv(fname)
+    file['%IPCA'] = file['%IPCA']/100
+    file.to_csv('Mineration_DATA.ETH/IPCA.csv')
+
+    return file
 
 
 def baixar_arquivo2(url, nome_arquivo):
@@ -64,6 +70,8 @@ baixar_arquivo2('https://servicodados.ibge.gov.br/api/v1/conjunturais?&d=s&user=
                 'Mineration_DATA.ETH/IPCA.json')
 IPCA = conversorjsontocsv('Mineration_DATA.ETH/IPCA.json')
 
+Date = ETHPerDay['Date(UTC)']
+
 # Creating dataset that group all files
 AllData = pd.DataFrame(ETHPerDay)
 
@@ -77,13 +85,45 @@ SuffixMult = 0.001
 PowerCoast = float(input('Qual o tarida de energia [USD]?: '))
 
 
+# Recalculating PowerCoast
+choicelist = []
+AllData['PowerCoast'] = PowerCoast
+for i in range(len(IPCA)):
+    valor = IPCA.loc[i, '%IPCA']
+    valor = float(valor)
+    choicelist.append(1-valor)
+
+'''condicionlist = [(AllData['Date(UTC)'].dt.year == 2020),
+                 (AllData['Date(UTC)'].dt.year == 2019),
+                 (AllData['Date(UTC)'].dt.year == 2018),
+                 (AllData['Date(UTC)'].dt.year == 2017),
+                 (AllData['Date(UTC)'].dt.year == 2016),
+                 (AllData['Date(UTC)'].dt.year == 2015)
+                 ]'''
+
+print(choicelist)
+
+
+'''AllData['Múltiplo'] = numpy.select(condicionlist, choicelist, default=1)'''
+
+
+
+
+'''
+condicionlist = [(AllData['Date(UTC)'].dt.year == 2020),
+                 (AllData['Date(UTC)'].dt.year == 2019),
+                 (AllData['Date(UTC)'].dt.year == 2018),
+                 (AllData['Date(UTC)'].dt.year == 2017),
+                 (AllData['Date(UTC)'].dt.year == 2016),
+                 (AllData['Date(UTC)'].dt.year == 2015)
+                 ]
+choicelist = [AllData['PowerCoast'] * IPCA[]]'''
+
 # Calculating profit
 AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
 AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
 AllData['USD_Coast'] = Power * SuffixMult * PowerCoast * 24
 AllData['USD_Profit'] = AllData['USD_Revenue'] - AllData['USD_Coast']
-
-
 
 # Converting dataset to .csv
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')
