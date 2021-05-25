@@ -5,7 +5,7 @@ import json
 import pandas as pd
 import os
 import numpy as np
-
+import datetime
 
 def baixar_arquivo(url, nome_arquivo):
     resultado = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) '
@@ -70,6 +70,7 @@ baixar_arquivo2('https://servicodados.ibge.gov.br/api/v1/conjunturais?&d=s&user=
                 'Mineration_DATA.ETH/IPCA.json')
 IPCA = conversorjsontocsv('Mineration_DATA.ETH/IPCA.json')
 
+
 Date = ETHPerDay['Date(UTC)']
 
 # Creating dataset that group all files
@@ -84,47 +85,39 @@ Power = int(input('Qual a potência [W]?: '))
 SuffixMult = 0.001
 PowerCoast = float(input('Qual o tarida de energia [USD]?: '))
 
-
 # Recalculating PowerCoast
 choicelist = []
+c = datetime.date.today().year - 1
+cont = len(IPCA)-1
 AllData['PowerCoast'] = PowerCoast
 for i in range(len(IPCA)):
-    valor = IPCA.loc[i, '%IPCA']
-    valor = float(valor)
-    choicelist.append(1-valor)
+    if c >= 2015:
+        valor = float(IPCA.loc[i + cont, '%IPCA'])
+        if c == 2020:
+            novo_valor = 1 - valor
+            choicelist.append(novo_valor)
 
-'''condicionlist = [(AllData['Date(UTC)'].dt.year == 2020),
-                 (AllData['Date(UTC)'].dt.year == 2019),
-                 (AllData['Date(UTC)'].dt.year == 2018),
-                 (AllData['Date(UTC)'].dt.year == 2017),
-                 (AllData['Date(UTC)'].dt.year == 2016),
-                 (AllData['Date(UTC)'].dt.year == 2015)
-                 ]'''
+        else:
+            novo_valor = novo_valor - valor
+            choicelist.append(novo_valor)
+    cont -= 2
+    c -= 1
 
-print(choicelist)
+# Condicional structure for readjustment
+condicionlist = [AllData['Date(UTC)'].dt.year == 2020,
+                 AllData['Date(UTC)'].dt.year == 2019,
+                 AllData['Date(UTC)'].dt.year == 2018,
+                 AllData['Date(UTC)'].dt.year == 2017,
+                 AllData['Date(UTC)'].dt.year == 2016,
+                 AllData['Date(UTC)'].dt.year == 2015]
 
-
-'''AllData['Múltiplo'] = numpy.select(condicionlist, choicelist, default=1)'''
-
-
-
-
-'''
-condicionlist = [(AllData['Date(UTC)'].dt.year == 2020),
-                 (AllData['Date(UTC)'].dt.year == 2019),
-                 (AllData['Date(UTC)'].dt.year == 2018),
-                 (AllData['Date(UTC)'].dt.year == 2017),
-                 (AllData['Date(UTC)'].dt.year == 2016),
-                 (AllData['Date(UTC)'].dt.year == 2015)
-                 ]
-choicelist = [AllData['PowerCoast'] * IPCA[]]'''
-
+AllData['Múltiplo'] = np.select(condicionlist, choicelist, default=1)
+AllData['PowerCoast'] = PowerCoast * AllData['Múltiplo']
 # Calculating profit
 AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
 AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
-AllData['USD_Coast'] = Power * SuffixMult * PowerCoast * 24
+AllData['USD_Coast'] = Power * SuffixMult * AllData['PowerCoast'] * 24
 AllData['USD_Profit'] = AllData['USD_Revenue'] - AllData['USD_Coast']
 
 # Converting dataset to .csv
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')
-# print(pd.read_csv('Mineration_DATA.ETH/AllData.csv').head())
