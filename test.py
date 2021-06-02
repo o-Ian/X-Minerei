@@ -16,7 +16,7 @@ from time import sleep
 
 option = Options()
 option.headless = False
-driver = webdriver.Firefox(executable_path=r'./geckodriver.exe')
+driver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
 driver.get('https://vigiadepreco.com.br/p/4712900927290/')
 driver.maximize_window()
 action = webdriver.ActionChains(driver)
@@ -37,20 +37,25 @@ size = graph.size
 # Move the mouse to graph begin
 action.move_to_element_with_offset(graph, 1127.0999755859375, 0).perform()
 
+# Creating DataFrame
+GPUPrice = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
+
 # Moving mouse and catching data
 
-limit = 'em 02/05/2021'
-pace = -5
+limit = datetime.datetime.strptime('18/12/2020', '%d/%m/%Y').date()
+pace = -12
 while True:
     action.move_by_offset(pace, 0).perform()
     valor = driver.find_element_by_css_selector('#historico > div > div.graph.pb-5 > div.__ext-graph > div > svg > g.cnt-tooltip > g > text:nth-child(1)').text
     date = driver.find_element_by_css_selector('#historico > div > div.graph.pb-5 > div.__ext-graph > div > svg > g.cnt-tooltip > g > text:nth-child(2)').text
     date = datetime.datetime.strptime(date[3:], '%d/%m/%Y').date()
-
-
+    GPUPrice.loc[len(GPUPrice)] = [date, valor]
+    if date <= limit:
+        break
 driver.quit()
-print(loc)
-print(size)
-print(valor)
-print(date)
-print(type(date))
+
+for index, row in GPUPrice.iterrows():
+    GPUPrice.loc[index+1] = [row['Date(UTC)'] - datetime.timedelta(days=1), 2]
+
+
+GPUPrice.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
