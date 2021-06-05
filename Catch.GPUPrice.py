@@ -1,12 +1,5 @@
-import requests
-import csv
-import json
 import pandas as pd
-import os
-import numpy as np
 import datetime
-
-from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,13 +7,24 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from time import sleep
 
+
+def inserir_linha(idx, df, df_inserir):
+    dfA = df.iloc[:idx, ]
+    dfB = df.iloc[idx:, ]
+
+    df = dfA.append(df_inserir).append(dfB).reset_index(drop=True)
+
+    return df
+
+
 option = Options()
 option.headless = False
-driver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
+driver = webdriver.Firefox(executable_path=r'./geckodriver.exe')
 driver.get('https://vigiadepreco.com.br/p/4712900927290/')
 driver.maximize_window()
 action = webdriver.ActionChains(driver)
 sleep(10)
+
 # Close the window that apper in the beggin
 closeprog = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__layout"]/div/main/div[1]/div/div/div[2]/button/img')))
 closeprog.click()
@@ -41,21 +45,54 @@ action.move_to_element_with_offset(graph, 1127.0999755859375, 0).perform()
 GPUPrice = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
 
 # Moving mouse and catching data
-
 limit = datetime.datetime.strptime('18/12/2020', '%d/%m/%Y').date()
-pace = -12
+pace = -13
 while True:
     action.move_by_offset(pace, 0).perform()
     valor = driver.find_element_by_css_selector('#historico > div > div.graph.pb-5 > div.__ext-graph > div > svg > g.cnt-tooltip > g > text:nth-child(1)').text
+    valor = str(valor)
     date = driver.find_element_by_css_selector('#historico > div > div.graph.pb-5 > div.__ext-graph > div > svg > g.cnt-tooltip > g > text:nth-child(2)').text
     date = datetime.datetime.strptime(date[3:], '%d/%m/%Y').date()
-    GPUPrice.loc[len(GPUPrice)] = [date, valor]
+    GPUPrice.loc[len(GPUPrice)] = [date, valor[3:].replace('.', '').replace(',', '.')]
     if date <= limit:
         break
 driver.quit()
 
-for index, row in GPUPrice.iterrows():
-    GPUPrice.loc[index+1] = [row['Date(UTC)'] - datetime.timedelta(days=1), 2]
+# Converting columns
+GPUPrice['R$ Price'] = GPUPrice['R$ Price'].astype('float64')
+GPUPrice['Date(UTC)'] = GPUPrice['Date(UTC)'].astype('datetime64')
+
+# Transforming GPUPrice['Date(UTC)'] in a list
+datas = GPUPrice['Date(UTC)']
+list_datas = []
+for linhas in datas:
+    list_datas.append(linhas)
+
+# Transforming GPUPrice['R$ Price'] in a list
+price = GPUPrice['R$ Price']
+list_price = []
+for value in price:
+    list_price.append(value)
+
+# Adding date that foul
+c = 1
+cont = 0
+for index in range(0, len(GPUPrice)-1):
+    d_iserido = {'Date(UTC)': [list_datas[cont] - datetime.timedelta(days=1)],
+                 'R$ Price': [(list_price[cont]+list_price[c])/2]}
+    df_iserido = pd.DataFrame(data=d_iserido)
+    GPUPrice = inserir_linha(index+c, GPUPrice, df_iserido)
+    c += 1
+    cont += 1
+
+# Formatting dataframe
+GPUPrice2 = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
+
+GPUPrice2['Date(UTC)'] = GPUPrice['Date(UTC)']
+GPUPrice2['R$ Price'] = GPUPrice['R$ Price']
 
 
-GPUPrice.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
+GPUPrice2 = GPUPrice2.sort_values(by=['Date(UTC)'], ignore_index=True)
+
+# Converting dataframe to .csv file
+GPUPrice2.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
