@@ -91,7 +91,6 @@ GPUPrice2 = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
 GPUPrice2['Date(UTC)'] = GPUPrice['Date(UTC)']
 GPUPrice2['R$ Price'] = GPUPrice['R$ Price']
 
-
 GPUPrice2 = GPUPrice2.sort_values(by=['Date(UTC)'], ignore_index=True)
 
 # Converting dataframe to .csv file

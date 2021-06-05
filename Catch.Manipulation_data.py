@@ -1,4 +1,3 @@
-import numpy
 import requests
 import csv
 import json
@@ -11,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+
 
 def baixar_arquivo(url, nome_arquivo):
     resultado = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) '
@@ -53,6 +53,7 @@ def baixar_arquivo2(url, nome_arquivo):
 
 def calculateProfit(hashrate_proprio, difficulty, blockreward_dia, fees=1):
     return (((hashrate_proprio*1000000)*(1-((fees)/100)))/(difficulty*1000000000000))*blockreward_dia
+
 
 def infoGrafico(url):
     option = Options()
@@ -126,7 +127,7 @@ for i in range(len(IPCA)):
     cont -= 2
     c -= 1
 
-# Condicional structure for readjustment
+# Conditional structure for readjustment
 condicionlist = [AllData['Date(UTC)'].dt.year == 2020,
                  AllData['Date(UTC)'].dt.year == 2019,
                  AllData['Date(UTC)'].dt.year == 2018,
@@ -136,11 +137,17 @@ condicionlist = [AllData['Date(UTC)'].dt.year == 2020,
 
 AllData['Múltiplo'] = np.select(condicionlist, choicelist, default=1)
 AllData['PowerCoast'] = PowerCoast * AllData['Múltiplo']
+
 # Calculating profit
 AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
 AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
 AllData['USD_Coast'] = Power * SuffixMult * AllData['PowerCoast'] * 24
 AllData['USD_Profit'] = AllData['USD_Revenue'] - AllData['USD_Coast']
 
-# Converting dataset to .csv
+# Putting together AllData and GPUPrice
+AllData['Date(UTC)'] = AllData['Date(UTC)'].astype('datetime64')
+
+GPUPrice = pd.read_csv('Mineration_DATA.ETH/GPUPrice.csv', index_col=0)
+GPUPrice['Date(UTC)'] = GPUPrice['Date(UTC)'].astype('datetime64')
+AllData = pd.merge(AllData, GPUPrice, on='Date(UTC)', how='outer')
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')

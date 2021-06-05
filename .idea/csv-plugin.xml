@@ -31,6 +31,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Mineration_DATA.ETH\GPUPrice.v45.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Mineration_DATA.ETH\GPUPrice.v45ccc.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Mineration_DATA.ETH\GPUPricev2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Mineration_DATA.ETH\IPCA.csv">
           <value>
             <Attribute>
@@ -39,6 +60,13 @@
           </value>
         </entry>
         <entry key="\Mineration_DATA.ETH\NetworkDifficulty_TH_s.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Mineration_DATA.ETH\TESTE.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
