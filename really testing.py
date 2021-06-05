@@ -3,10 +3,10 @@ import datetime
 import pandas as pd
 
 
-df = pd.read_csv('Mineration_DATA.ETH/AllData.csv')
+'''GPUPrice = pd.read_csv('Mineration_DATA.ETH/GPUPrice.csv', index_col=0)
+AllData = pd.read_csv('Mineration_DATA.ETH/AllData.csv', index_col=0)
+df_teste = pd.merge(AllData, GPUPrice, on='Date(UTC)', how='outer')
+df_teste.to_csv('Mineration_DATA.ETH/TESTE.csv')
+'''
+df = pd.read_csv('Mineration_DATA.ETH/GPUPrice.csv')
 df.info()
-
-'''for index, row in df.iterrows():
-    row['Date(UTC)'] = datetime.datetime.strptime(row['Date(UTC)'], '%d/%m/%Y').date()
-    df.loc[index+1] = [index+1, row['Date(UTC)'] - datetime.timedelta(days=1), 2]'''
-
