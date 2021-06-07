@@ -74,7 +74,8 @@ def infoGrafico(url):
     print(loc)
 
 
-# Downloading and renaming files
+# Download
+# ing and renaming files
 ETHPerDay = baixar_arquivo('https://etherscan.io/chart/blockreward?output=csv',
                            'Mineration_DATA.ETH/ETHPerDay.csv')
 ETHPerDay = ETHPerDay.rename(columns={'Value': 'ETHPerDay'})

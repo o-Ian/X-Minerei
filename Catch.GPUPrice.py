@@ -1,5 +1,7 @@
 import pandas as pd
 import datetime
+import os
+import numpy as np
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -17,13 +19,23 @@ def inserir_linha(idx, df, df_inserir):
     return df
 
 
+ExistFile = False
+
+if os.path.isfile('Mineration_DATA.ETH/GPUPrice.csv'):
+    ExistFile = True
+    GPUPricePast = pd.read_csv('Mineration_DATA.ETH/GPUPrice.csv')
+    LastDate = GPUPricePast.loc[len(GPUPricePast)-1]
+    LastDate = LastDate['Date(UTC)']
+    LastDate = datetime.datetime.strptime(LastDate, '%Y-%m-%d').date()
+
 option = Options()
 option.headless = False
 driver = webdriver.Firefox(executable_path=r'./geckodriver.exe')
 driver.get('https://vigiadepreco.com.br/p/4712900927290/')
 driver.maximize_window()
 action = webdriver.ActionChains(driver)
-sleep(10)
+sleep(7)
+
 
 # Close the window that apper in the beggin
 closeprog = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__layout"]/div/main/div[1]/div/div/div[2]/button/img')))
@@ -45,7 +57,7 @@ action.move_to_element_with_offset(graph, 1127.0999755859375, 0).perform()
 GPUPrice = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
 
 # Moving mouse and catching data
-limit = datetime.datetime.strptime('18/12/2020', '%d/%m/%Y').date()
+limit = datetime.datetime.strptime('20/12/2020', '%d/%m/%Y').date()
 pace = -13
 while True:
     action.move_by_offset(pace, 0).perform()
@@ -53,9 +65,13 @@ while True:
     valor = str(valor)
     date = driver.find_element_by_css_selector('#historico > div > div.graph.pb-5 > div.__ext-graph > div > svg > g.cnt-tooltip > g > text:nth-child(2)').text
     date = datetime.datetime.strptime(date[3:], '%d/%m/%Y').date()
+    if ExistFile:
+        if date <= LastDate:
+            break
+    else:
+        if date <= limit:
+            break
     GPUPrice.loc[len(GPUPrice)] = [date, valor[3:].replace('.', '').replace(',', '.')]
-    if date <= limit:
-        break
 driver.quit()
 
 # Converting columns
@@ -93,5 +109,11 @@ GPUPrice2['R$ Price'] = GPUPrice['R$ Price']
 
 GPUPrice2 = GPUPrice2.sort_values(by=['Date(UTC)'], ignore_index=True)
 
+if ExistFile:
+    GPUPrice3 = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
+    GPUPrice2 = pd.concat([GPUPricePast, GPUPrice2], ignore_index=True)
+    GPUPrice3['Date(UTC)'] = GPUPrice2['Date(UTC)']
+    GPUPrice3['R$ Price'] = GPUPrice2['R$ Price']
+    GPUPrice3['Date(UTC)'] = GPUPrice3['Date(UTC)'].astype('datetime64')
 # Converting dataframe to .csv file
-GPUPrice2.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
+GPUPrice3.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
