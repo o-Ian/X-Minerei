@@ -139,6 +139,7 @@ condicionlist = [AllData['Date(UTC)'].dt.year == 2020,
 AllData['Múltiplo'] = np.select(condicionlist, choicelist, default=1)
 AllData['PowerCoast'] = PowerCoast * AllData['Múltiplo']
 
+
 # Calculating profit
 AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
 AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
