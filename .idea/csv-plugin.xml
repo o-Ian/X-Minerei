@@ -10,6 +10,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Mineration_DATA.ETH\CORRELACOES.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Mineration_DATA.ETH\DollarPrice.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Mineration_DATA.ETH\ETHPerDay.csv">
           <value>
             <Attribute>
@@ -45,7 +59,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Mineration_DATA.ETH\TESTE.csv">
+        <entry key="\TESTESTE.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

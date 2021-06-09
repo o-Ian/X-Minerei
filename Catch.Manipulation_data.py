@@ -55,27 +55,7 @@ def calculateProfit(hashrate_proprio, difficulty, blockreward_dia, fees=1):
     return (((hashrate_proprio*1000000)*(1-((fees)/100)))/(difficulty*1000000000000))*blockreward_dia
 
 
-def infoGrafico(url):
-    option = Options()
-    option.headless = False
-    driver = webdriver.Chrome(options=option)
-    driver.get(url)
-    driver.maximize_window()
-
-    action = webdriver.ActionChains(driver)
-
-    search_1year = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div/div/main/div[4]/div/div[2]/div/div[2]/div[1]/div/div[2]/div[1]')))
-    search_1year.click()
-
-    graph = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/div/main/div[4]/div/div[2]/div/div[2]/div[1]/div/svg/g[2]')))
-    loc = graph.location
-    size = graph.size
-
-    print(loc)
-
-
-# Download
-# ing and renaming files
+# Downloading and renaming files
 ETHPerDay = baixar_arquivo('https://etherscan.io/chart/blockreward?output=csv',
                            'Mineration_DATA.ETH/ETHPerDay.csv')
 ETHPerDay = ETHPerDay.rename(columns={'Value': 'ETHPerDay'})
@@ -95,7 +75,6 @@ baixar_arquivo2('https://servicodados.ibge.gov.br/api/v1/conjunturais?&d=s&user=
                 'Mineration_DATA.ETH/IPCA.json')
 IPCA = conversorjsontocsv('Mineration_DATA.ETH/IPCA.json')
 
-
 Date = ETHPerDay['Date(UTC)']
 
 # Creating dataset that group all files
@@ -109,6 +88,7 @@ HashUsuario = float(input('Qual o seu hashrate [Mh/s]?: '))
 Power = int(input('Qual a potência [W]?: '))
 SuffixMult = 0.001
 PowerCoast = float(input('Qual o tarida de energia [USD]?: '))
+RS_GPUPrice = float(input('Qual o preço da placa de vídeo?: '))
 
 # Recalculating PowerCoast
 choicelist = []
@@ -121,7 +101,6 @@ for i in range(len(IPCA)):
         if c == 2020:
             novo_valor = 1 - valor
             choicelist.append(novo_valor)
-
         else:
             novo_valor = novo_valor - valor
             choicelist.append(novo_valor)
@@ -136,9 +115,8 @@ condicionlist = [AllData['Date(UTC)'].dt.year == 2020,
                  AllData['Date(UTC)'].dt.year == 2016,
                  AllData['Date(UTC)'].dt.year == 2015]
 
-AllData['Múltiplo'] = np.select(condicionlist, choicelist, default=1)
-AllData['PowerCoast'] = PowerCoast * AllData['Múltiplo']
-
+AllData['Inflação'] = np.select(condicionlist, choicelist, default=1)
+AllData['PowerCoast'] = PowerCoast * AllData['Inflação']
 
 # Calculating profit
 AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
@@ -151,5 +129,62 @@ AllData['Date(UTC)'] = AllData['Date(UTC)'].astype('datetime64')
 
 GPUPrice = pd.read_csv('Mineration_DATA.ETH/GPUPrice.csv', index_col=0)
 GPUPrice['Date(UTC)'] = GPUPrice['Date(UTC)'].astype('datetime64')
+
+# Activate/Deactivate when the relations between the variables must be done
 AllData = pd.merge(AllData, GPUPrice, on='Date(UTC)', how='outer')
+
+# Catching last date from AllData dataframe
+last_date = AllData.loc[len(AllData)-1]
+last_date = last_date['Date(UTC)']
+last_date = str(last_date)
+
+last_date = datetime.datetime.strptime(last_date[:10], '%Y-%m-%d').date()
+last_date = last_date.strftime('%m-%d-%Y')
+
+# Downloading dollarPrice.csv
+baixar_arquivo2(f"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='07-30-2015'&@dataFinalCotacao='{last_date}'&$top=999999999&$format=text/csv", r'Mineration_DATA.ETH/DollarPrice.csv')
+dollarPrice2 = pd.read_csv('Mineration_DATA.ETH/DollarPrice.csv')
+dollarPrice = pd.DataFrame(columns=['R$_DollarPrice', 'Date(UTC)'])
+
+# Converting dollarPrice columns
+dollarPrice['R$_DollarPrice'] = dollarPrice2['cotacaoCompra'].astype('string')
+dollarPrice['R$_DollarPrice'] = dollarPrice['R$_DollarPrice'].str.replace(',', '.').astype('float64')
+dollarPrice['Date(UTC)'] = dollarPrice2['dataHoraCotacao'].astype('string')
+
+# Taking out hours from Date(UTC) column
+dates = dollarPrice['Date(UTC)']
+list_data = []
+for date in dates:
+    list_data.append(date[:10])
+
+dollarPrice['Date(UTC)'] = list_data
+dollarPrice['Date(UTC)'] = pd.to_datetime(dollarPrice['Date(UTC)'])
+
+# Putting dollarPrice with AllData dataframe
+AllData = pd.merge(AllData, dollarPrice, on='Date(UTC)', how='outer')
+
+# Replacing NaN values to last value from dollarPrice column
+AllData['R$_DollarPrice'].fillna(method='ffill', inplace=True)
+
+# Putting Price and Date(UTC) column from AllData on dollarPrice dataframe
+dollarPrice['R$_DollarPrice'] = AllData['R$_DollarPrice']
+dollarPrice['Date(UTC)'] = AllData['Date(UTC)']
+
+# Putting GPU Price from user on csv file
+AllData._set_value(len(AllData)-1, 'R$_GPUPrice', RS_GPUPrice)
+
+# Creating new column (relation between Network Difficulty with the last Network Difficulty)
+Last_Difficulty = AllData['NetworkDifficulty[TH/s]'].iloc[-1]
+AllData['Multiple_Difficulty/LastDifficulty'] = AllData['NetworkDifficulty[TH/s]']/Last_Difficulty
+
+# Making the prevision of GPU Price
+'''fill_values = {'R$_GPUPrice': RS_GPUPrice * AllData['Multiple_Difficulty/LastDifficulty']}
+AllData.fillna(fill_values, inplace=True)'''
+AllData['R$_GPUPrice'] = RS_GPUPrice * AllData['Multiple_Difficulty/LastDifficulty']
+
+# GPU Price conversion (real to dollar)
+AllData['USD_GPUPrice'] = AllData['R$_GPUPrice'] / AllData['R$_DollarPrice']
+
+# Last step
+dollarPrice.to_csv('Mineration_DATA.ETH/DollarPrice.csv')
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')
