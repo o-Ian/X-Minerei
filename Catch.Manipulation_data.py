@@ -129,6 +129,7 @@ AllData['Date(UTC)'] = AllData['Date(UTC)'].astype('datetime64')
 
 GPUPrice = pd.read_csv('Mineration_DATA.ETH/GPUPrice.csv', index_col=0)
 GPUPrice['Date(UTC)'] = GPUPrice['Date(UTC)'].astype('datetime64')
+del GPUPrice['R$_GPUPrice']
 
 # Activate/Deactivate when the relations between the variables must be done
 AllData = pd.merge(AllData, GPUPrice, on='Date(UTC)', how='outer')
@@ -178,9 +179,19 @@ Last_Difficulty = AllData['NetworkDifficulty[TH/s]'].iloc[-1]
 AllData['Multiple_Difficulty/LastDifficulty'] = AllData['NetworkDifficulty[TH/s]']/Last_Difficulty
 
 # Making the prevision of GPU Price
-'''fill_values = {'R$_GPUPrice': RS_GPUPrice * AllData['Multiple_Difficulty/LastDifficulty']}
-AllData.fillna(fill_values, inplace=True)'''
+AllData['R$_GPUPrice'] = RS_GPUPrice * AllData['Multiple_GPUPrice']
+
+fill_values = {'R$_GPUPrice': RS_GPUPrice * AllData['Multiple_Difficulty/LastDifficulty']}
+AllData.fillna(fill_values, inplace=True)
+
 AllData['R$_GPUPrice'] = RS_GPUPrice * AllData['Multiple_Difficulty/LastDifficulty']
+
+# Conditional structure to use inflation as a multiplicator when date is equal or less than 2017-09-12
+condicionlist = [AllData['Date(UTC)'] <= '2017-09-12'
+                 ]
+choicelist = [AllData['R$_GPUPrice'].loc[775] * AllData['Inflação']
+              ]
+AllData['R$_GPUPrice'] = np.select(condicionlist, choicelist, default=AllData['R$_GPUPrice'])
 
 # GPU Price conversion (real to dollar)
 AllData['USD_GPUPrice'] = AllData['R$_GPUPrice'] / AllData['R$_DollarPrice']

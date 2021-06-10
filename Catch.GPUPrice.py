@@ -102,19 +102,28 @@ for index in range(0, len(GPUPrice)-1):
     cont += 1
 
 # Formatting dataframe
-GPUPrice2 = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
+GPUPrice2 = pd.DataFrame(columns=['Date(UTC)', 'R$_GPUPrice'])
 
-GPUPrice2['Date(UTC)'] = GPUP rice['Date(UTC)']
-GPUPrice2['R$ Price'] = GPUPrice['R$ Price']
+GPUPrice2['Date(UTC)'] = GPUPrice['Date(UTC)']
+GPUPrice2['R$_GPUPrice'] = GPUPrice['R$ Price']
 
-GPUPrice2 = GPUPrice2.sort_values(by=['Date(UTC)'], ignore_index=True)
+GPUPrice2.sort_values(by=['Date(UTC)'], ignore_index=True, inplace=True)
+
+# Creating Multiple_GPUPrice column, a comparison from last price to others
+LastPriceGPU = GPUPrice2['R$_GPUPrice'].iloc[-1]
 
 if ExistFile:
-    GPUPrice3 = pd.DataFrame(columns=['Date(UTC)', 'R$ Price'])
+    GPUPrice3 = pd.DataFrame(columns=['Date(UTC)', 'R$_GPUPrice', 'Multiple_GPUPrice'])
     GPUPrice2 = pd.concat([GPUPricePast, GPUPrice2], ignore_index=True)
     GPUPrice3['Date(UTC)'] = GPUPrice2['Date(UTC)']
-    GPUPrice3['R$_GPUPrice'] = GPUPrice2['R$ Price']
+    GPUPrice3['R$_GPUPrice'] = GPUPrice2['R$_GPUPrice']
     GPUPrice3['Date(UTC)'] = GPUPrice3['Date(UTC)'].astype('datetime64')
+    GPUPrice2['Multiple_GPUPrice'] = GPUPrice2['R$_GPUPrice'] / LastPriceGPU
+    GPUPrice3['Multiple_GPUPrice'] = GPUPrice2['Multiple_GPUPrice']
+    # Converting dataframe to .csv file
+    GPUPrice3.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
 
-# Converting dataframe to .csv file
-GPUPrice3.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
+else:
+    # Converting dataframe to .csv file
+    GPUPrice2['Multiple_GPUPrice'] = GPUPrice2['R$_GPUPrice'] / LastPriceGPU
+    GPUPrice2.to_csv('Mineration_DATA.ETH/GPUPrice.csv')
