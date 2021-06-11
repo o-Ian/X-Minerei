@@ -112,6 +112,10 @@ GPUPrice2.sort_values(by=['Date(UTC)'], ignore_index=True, inplace=True)
 # Creating Multiple_GPUPrice column, a comparison from last price to others
 LastPriceGPU = GPUPrice2['R$_GPUPrice'].iloc[-1]
 
+# Removing useless file
+if os.path.isfile('geckodriver.log'):
+    os.remove('geckodriver.log')
+
 if ExistFile:
     GPUPrice3 = pd.DataFrame(columns=['Date(UTC)', 'R$_GPUPrice', 'Multiple_GPUPrice'])
     GPUPrice2 = pd.concat([GPUPricePast, GPUPrice2], ignore_index=True)

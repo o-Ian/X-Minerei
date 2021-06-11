@@ -5,6 +5,7 @@ import pandas as pd
 import os
 import numpy as np
 import datetime
+import os
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -122,7 +123,8 @@ AllData['PowerCoast'] = PowerCoast * AllData['Inflação']
 AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
 AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
 AllData['USD_Coast'] = Power * SuffixMult * AllData['PowerCoast'] * 24
-AllData['USD_Profit'] = AllData['USD_Revenue'] - AllData['USD_Coast']
+AllData['USD_Profit/day'] = AllData['USD_Revenue'] - AllData['USD_Coast']
+AllData['USD_Profit/month'] = AllData['USD_Profit/day'] * 30
 
 # Putting together AllData and GPUPrice
 AllData['Date(UTC)'] = AllData['Date(UTC)'].astype('datetime64')
@@ -195,6 +197,10 @@ AllData['R$_GPUPrice'] = np.select(condicionlist, choicelist, default=AllData['R
 
 # GPU Price conversion (real to dollar)
 AllData['USD_GPUPrice'] = AllData['R$_GPUPrice'] / AllData['R$_DollarPrice']
+
+# Column that calcule how much months do you need to pay your investment
+AllData['Pays_itself/months'] = AllData['USD_GPUPrice']/AllData['USD_Profit/month']
+
 
 # Last step
 dollarPrice.to_csv('Mineration_DATA.ETH/DollarPrice.csv')
