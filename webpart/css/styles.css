@@ -47,6 +47,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+p a {
+    text-decoration: none;
+}
 .logo-all{
     float: left;
 
@@ -120,25 +123,27 @@ table {
     line-height: 32px;
     padding-left: 5px;
 }
-.bts{
+.bt-position{
     padding-top: 30px;
     align-content: center;
     padding-left: 70px;
 }
 .uni-bt{
     float: left;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 22px;
-    text-decoration: none;
-    color: #2b2b2b;
-    text-align: center;
     border: 0.2px solid #5C0EBF;
     border-radius: 28px;
     padding: 20px 60px;
+    cursor: pointer;
 }
 .uni-bt:hover{
     background: #5C0EBF;
+    color: white;
+}
+.bt-text{
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
 }
 .text-bt{
     font-family: 'Poppins', sans-serif;
@@ -167,10 +172,20 @@ table {
 .text-decoration:hover{
     color: white;
 }
-.imagem-btc{
+.image1 {
     float: right;
     padding-top: 120px;
-}
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  .image2 {
+    position: absolute;
+    top: 510px;
+    left: 770px;
+    z-index: 1;
+  }
 .box-icon{
     width: 80px;
     height: 80px;
