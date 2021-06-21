@@ -31,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    font-family: 'Montserrat', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -48,6 +49,9 @@ table {
 	border-spacing: 0;
 }
 p a {
+    text-decoration: none;
+}
+a{
     text-decoration: none;
 }
 .logo-all{
@@ -112,7 +116,6 @@ p a {
     font-size: 60px;
     color: #303030;
     font-weight: 800;
-    font-family: 'Montserrat', sans-serif;
     line-height: 70px;
 }
 .sub-titulo{
@@ -123,10 +126,26 @@ p a {
     line-height: 32px;
     padding-left: 5px;
 }
+.title-apresentacao2{
+    font-size: 50px;
+    color: #303030;
+    font-weight: 800;
+    padding-top: 40px;
+    padding-left: 220px;
+}
+.sub-titulo2{
+    font-size: 22.5px;
+    color: #424242;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 15px;
+    line-height: 32px;
+    margin-left: 250px;
+    line-height: 30px;
+}
 .bt-position{
     padding-top: 30px;
     align-content: center;
-    padding-left: 70px;
+    padding-left: 90px;
 }
 .uni-bt{
     float: left;
@@ -144,6 +163,7 @@ p a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 22px;
+    color: black;
 }
 .text-bt{
     font-family: 'Poppins', sans-serif;
@@ -187,36 +207,52 @@ p a {
     z-index: 1;
   }
 .box-icon{
-    width: 80px;
-    height: 80px;
-    border: 2px solid #00E9C4;
-    border-radius: 10px;
+    width: 85px;
+    height: 85px;
+    border-radius: 8px;
     text-align: center;
+    margin-left: 26.5%;
 }
 .box-icon img{
     margin-top: 10px;
+    align-content: center;
+
 }
 .box-icone-title{
-    font-size: 22px;
-    font-weight: bold;
-    font-family: 'Lato', sans-serif;
+    font-size: 23px;
+    font-weight: 700;
     margin: 20px 0;
+    text-align: center;
 }
 .box-icone-text{
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    color: #424242;
-    line-height: 22px;
+    font-size: 17px;
+    color: #313131;
+    line-height: 140%;
+    text-align: center;
 }
 .icon-wrapping{
-    width: 12%;
+    width: 15%;
     float: left;
-    margin-left: 100px;
-    margin-bottom: 20px;
+    padding-left: 85px;
+    padding-bottom: 20px;
 }
 .icons{
-    margin-left: 150px;
+    margin-top: 60px;
+    margin-left: 160px;
+    padding-right: 70px;
 }
 .box-icon-color{
-    background: #00E9C4;
+    background: #303030;
+}
+.box-icon-color2{
+    background: #564c5c;
+}
+.eth_ico{
+    float: right;
+    padding-right: 335px;
+    margin-top: 22px;
+}
+.texto2{
+    padding-left: 80px;
+    padding-top: 10px;
 }
