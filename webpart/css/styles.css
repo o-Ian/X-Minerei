@@ -32,6 +32,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
     font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
 }
 ol, ul {
 	list-style: none;
@@ -52,6 +53,9 @@ p a {
     text-decoration: none;
 }
 a{
+    text-decoration: none;
+}
+ol{
     text-decoration: none;
 }
 .logo-all{
@@ -158,6 +162,20 @@ a{
     background: #5C0EBF;
     color: white;
 }
+.uni-bt-baixo{
+    border: 0.2px solid #44466F;
+    border-radius: 35px;
+    padding: 17px 45px;
+    cursor: pointer;
+}
+.uni-bt-baixo:hover{
+    background: #44466F;
+    color: white;
+}
+.bt-baixo-position{
+    padding-top: 50px;
+    padding-left: 510px;
+}
 .bt-text{
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
@@ -255,4 +273,30 @@ a{
 .texto2{
     padding-left: 80px;
     padding-top: 10px;
+}
+.bt-position-baixo{
+    margin: 30px;
+    padding-right: 30px;
+}
+.rodape{
+    background: #341e49;
+    line-height: 35px;
+    margin-top: 80px;
+}
+.rodape-text{
+    margin-left: 90px;
+    color: #bbbbbb;
+}
+.rodape-title{
+    margin-top: 15px;
+    margin-left: 90px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #a3aa92;
+}
+.copyright{
+    text-align: center;
+    line-height: 40px;
+    font-size: 17px;
+    
 }
