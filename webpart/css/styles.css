@@ -117,7 +117,7 @@ ol{
     
 }
 .title-apresentacao{
-    font-size: 60px;
+    font-size: 58px;
     color: #303030;
     font-weight: 800;
     line-height: 70px;
@@ -173,7 +173,7 @@ ol{
 }
 .bt-baixo-position{
     padding-top: 50px;
-    padding-left: 510px;
+    margin-left: 35%;
 }
 .bt-text{
     text-decoration: none;
@@ -229,11 +229,13 @@ ol{
     float: right;
     padding-top: 20px;
     padding-right: 20px;
+
 }
 .texto-botoes{
-    padding: 200px;
+    padding: 100px;
+    padding-bottom: 170px;
     padding-top: 170px;
-    margin-right: 30px;
+    margin-right: 20px;
     
 }
 .text-decoration{
@@ -282,16 +284,21 @@ ol{
     line-height: 140%;
     text-align: center;
 }
+.icon-wrapping2{
+    width: 15%;
+    float: left;
+    margin-left: 85px;
+    margin-bottom: 20px;
+}
 .icon-wrapping{
     width: 15%;
     float: left;
-    padding-left: 85px;
-    padding-bottom: 20px;
+    margin-left: 85px;
+    margin-bottom: 20px;
 }
 .icons{
-    margin-top: 60px;
-    margin-left: 160px;
-    padding-right: 70px;
+    margin-top: 65px;
+    margin-left: 12%;
 }
 .box-icon-color{
     background: #303030;
@@ -301,16 +308,23 @@ ol{
 }
 .eth_ico{
     float: right;
-    padding-right: 335px;
     margin-top: 22px;
+    width: 30%;
+}
+.texto{
+    margin-left: 11%;
+    margin-right: 10%;  
 }
 .texto2{
     padding-left: 80px;
     padding-top: 10px;
 }
+.img-right{
+    display: block;
+    justify-content: flex-end;
+}
 .bt-position-baixo{
-    margin: 30px;
-    padding-right: 30px;
+    
 }
 .rodape{
     background: #341e49;
@@ -333,4 +347,92 @@ ol{
     line-height: 40px;
     font-size: 17px;
     
+}
+@media screen and (max-width: 1210px){
+    .texto2{
+        padding-left: 30px;
+        padding-top: 10px;
+    }
+    .sub-titulo2{
+        margin-left: 200px;
+    }
+}
+@media screen and (max-width: 1343px){
+    .texto-botoes{
+        padding: 7px;
+        padding-bottom: 170px;
+        padding-top: 170px;
+        margin-right: 20px;
+        
+    }
+    .title-apresentacao2{
+        padding-left: 12.5%;
+        
+    }
+}
+@media screen and (max-width: 1445px){
+    .lucro-box{
+        display: none;
+    }
+    .icons{
+        margin-left: 6%;
+    }
+    .image1{
+        width: 40%;
+    }
+    .
+}
+@media screen and (max-width: 1518px){
+    .eth_ico{
+        display: none;
+    }
+    .texto{
+        margin-left: 9%;
+    }
+    .sub-titulo2{
+        margin-left: 12%;
+    }
+}
+@media screen and (min-width: 1578px){
+    .image2{
+        margin-left: 6%;
+    }
+   
+}
+@media screen and (min-width: 1725px){
+    .texto{
+        margin-left: 16%;
+    }
+    .image2{
+        margin-left: 10%;
+    }
+    .title-apresentacao2{
+        padding-left: 17%;
+    }
+    .sub-titulo2{
+        text-align: center;
+        margin-left: 3%;
+    }
+    .icons{
+        margin-left: 13%;
+    
+    }
+   
+}
+@media screen and (min-width: 1739px){
+    .eth_ico{
+        display: none;
+    }
+    .bt-baixo-position{
+        margin-left: 38%;
+    }
+
+}
+@media screen and (min-width: 1838px){
+    .image2{
+        margin-left: 14%;
+    }
+   .texto{
+       margin-left: 22%;
+   }
 }
