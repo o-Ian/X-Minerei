@@ -106,7 +106,8 @@ ol{
     clear: both;
 }
 .center{
-    width: 1100px;
+    max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
 }
 .apresentacao{
@@ -135,20 +136,21 @@ ol{
     color: #303030;
     font-weight: 800;
     padding-top: 40px;
-    padding-left: 220px;
+    padding-left: 13%;
 }
 .sub-titulo2{
     font-size: 22.5px;
     color: #424242;
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-right: 20%;
+    margin-left: 17%;
     padding-top: 19px;
-    margin-left: 250px;
     line-height: 35px;
 }
 .bt-position{
     padding-top: 30px;
     align-content: center;
-    padding-left: 90px;
 }
 .uni-bt{
     float: left;
@@ -174,6 +176,13 @@ ol{
 .bt-baixo-position{
     padding-top: 50px;
     margin-left: 35%;
+}
+.bt-text-baixo{
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: black;
 }
 .bt-text{
     text-decoration: none;
@@ -233,7 +242,7 @@ ol{
 }
 .texto-botoes{
     padding: 100px;
-    padding-bottom: 170px;
+    padding-bottom: 200px;
     padding-top: 170px;
     margin-right: 20px;
     
@@ -248,10 +257,8 @@ ol{
 .image1 {
     float: right;
     padding-top: 120px;
-    position: relative;
-    top: 0;
-    left: 0;
     z-index: 0;
+    clear: both;
   }
   .image2 {
     position: absolute;
@@ -283,12 +290,6 @@ ol{
     color: #313131;
     line-height: 140%;
     text-align: center;
-}
-.icon-wrapping2{
-    width: 15%;
-    float: left;
-    margin-left: 85px;
-    margin-bottom: 20px;
 }
 .icon-wrapping{
     width: 15%;
@@ -348,56 +349,22 @@ ol{
     font-size: 17px;
     
 }
-@media screen and (max-width: 1210px){
-    .texto2{
-        padding-left: 30px;
-        padding-top: 10px;
+@media screen and (min-width: 1838px){
+    .image2{
+        margin-left: 14%;
     }
-    .sub-titulo2{
-        margin-left: 200px;
-    }
+   .texto{
+       margin-left: 22%;
+   }
 }
-@media screen and (max-width: 1343px){
-    .texto-botoes{
-        padding: 7px;
-        padding-bottom: 170px;
-        padding-top: 170px;
-        margin-right: 20px;
-        
-    }
-    .title-apresentacao2{
-        padding-left: 12.5%;
-        
-    }
-}
-@media screen and (max-width: 1445px){
-    .lucro-box{
-        display: none;
-    }
-    .icons{
-        margin-left: 6%;
-    }
-    .image1{
-        width: 40%;
-    }
-    .
-}
-@media screen and (max-width: 1518px){
+@media screen and (min-width: 1739px){
     .eth_ico{
         display: none;
     }
-    .texto{
-        margin-left: 9%;
+    .bt-baixo-position{
+        margin-left: 38%;
     }
-    .sub-titulo2{
-        margin-left: 12%;
-    }
-}
-@media screen and (min-width: 1578px){
-    .image2{
-        margin-left: 6%;
-    }
-   
+
 }
 @media screen and (min-width: 1725px){
     .texto{
@@ -410,29 +377,205 @@ ol{
         padding-left: 17%;
     }
     .sub-titulo2{
-        text-align: center;
-        margin-left: 3%;
+        margin-left: 10%;
     }
     .icons{
         margin-left: 13%;
     
     }
+}
+@media screen and (min-width: 1578px){
+    .image2{
+        margin-left: 6%;
+    }
    
 }
-@media screen and (min-width: 1739px){
+@media screen and (max-width: 1518px){
     .eth_ico{
         display: none;
     }
-    .bt-baixo-position{
-        margin-left: 38%;
+    .texto{
+        margin-left: 9%;
     }
-
 }
-@media screen and (min-width: 1838px){
-    .image2{
+@media screen and (max-width: 1445px){
+    .lucro-box{
+        display: none;
+    }
+    .icons{
+        margin-left: 6%;
+    }
+    .image1{
+        width: 40%;
+        display: inline-block;
+    }
+}
+@media screen and (max-width: 1343px){
+    .texto-botoes{
+        padding: 7px;
+        padding-bottom: 170px;
+        padding-top: 150px;
+        margin-right: 20px;
+        
+    }
+    .title-apresentacao2{
+        padding-left: 12.5%;
+        
+    }
+}
+@media screen and (max-width: 1210px){
+    .texto2{
+        padding-left: 30px;
+        padding-top: 10px;
+    }
+}
+@media screen and (max-width: 1110px){
+    .icon-wrapping{
+        width: 35%;
+        float: left;
+        margin-left: 10%;
+        margin-bottom: 50px;
+    }
+    .icons{
+        margin-top: 0;
+    }
+    .box-icon{
+        margin-left: 35%;
+    }
+    .texto2{
+        justify-content: center;
+    }
+    .title-apresentacao2{
+        padding-top: 0;
+    }
+    
+}
+@media screen and (max-width: 983px){
+    .texto{
+        text-align: center;
+        padding-left: 40px;
+        justify-content: center;
+    }
+    .uni-bt{
+        float: none;
+    }
+    .bt-position{
+        justify-content: center;
+        padding-top: 50px;
+    }
+    .img-right{
+        display: none;
+    }
+    .texto-botoes{
+        padding-top: 130px;
+        padding-bottom: 110px;
+    }
+    .title-apresentacao2{
+        padding-left: 8%;
+    }
+}
+@media screen and (max-width: 776px){
+    .bt-baixo-position{
+        margin-left: 28%;
+    }
+    .box-icon{
+        margin-left: 31%;
+    }
+}
+
+@media screen and (max-width: 684px) {
+    .uni-bt{
+        padding: 20px 20px;
+    }
+    .bt-baixo-position{
+        margin-left: 24%;
+    }
+    .box-icon{
+        margin-left: 28.5%;
+    }
+    .bt-position{
+        
+    }
+}
+@media screen and (max-width: 586px){
+      .uni-bt{
+        padding: 20px 10px;
+    }  
+    .bt-baixo-position{
+        margin-left: 19%;
+    }
+    .title-apresentacao{
+        font-size: 52px;
+    }
+}
+@media screen and (max-width: 554px){
+    
+}
+@media screen and (max-width: 540px){
+    .bt-text{
+        font-size: 18px;
+    }
+    .icons{
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 504px){
+    .texto{
+        padding-left: 5%;
+    }
+    .texto2{
+        padding-left: 0;
+    }
+    .box-icon{
+        margin-left: 24%;
+    }
+}
+@media screen and (max-width: 460px){
+    .bt-position{
+        
+    }
+}
+@media screen and (max-width: 440px){
+    .sub-titulo2{
+        margin: 0 0 0 0;
+    }
+}
+
+@media screen and (max-width: 434px){
+    .title-apresentacao2{
+        padding-left: 3%;
+    }
+    .texto{
+        padding-left: 3%;
+    }
+}
+@media screen and (max-width: 410px){
+    .bt-position{
+        
+    }
+    .title-apresentacao2{
+        font-size: 40px;
+    }
+    .bt-baixo-position{
         margin-left: 14%;
     }
-   .texto{
-       margin-left: 22%;
-   }
+}
+@media screen and (max-width: 405px){
+    .bt-position{
+}
+@media screen and (max-width: 397px){
+    .sub-titulo{
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 388px){
+    .uni-bt{
+        padding: 20px 9px;
+    }
+    .bt-position{
+    }
+    .texto{
+        padding-left: 1%;
+    }
 }
