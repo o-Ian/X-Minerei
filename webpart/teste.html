@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/charts.css">
+    <script>   
+        function mostrarAtivo(tag){
+        var tag_li = document.getElementById('lista_menu');
+        var tag_a = tag_li.getElementsByTagName('a');
+        for (i=0; i<tag_a.length; i++ )
+        {
+           tag_a[i].style.color = "";
+        }
+           tag.style.color = "#ff0000";
+        }
+     </script>
+</head>
+<body>
+    <ul id="lista_menu">
+        <li><a href="#" onclick="mostrarAtivo(this);">Home</a></li>
+        <li><a href="#" onclick="mostrarAtivo(this);">Fotos</a></li>
+        <li><a href="#" onclick="mostrarAtivo(this);">Agenda</a></li>
+        <li><a href="#" onclick="mostrarAtivo(this);">Contato</a></li>
+     </ul>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="js/chart.js"></script>
+         
+</body>
+</html>

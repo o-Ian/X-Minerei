@@ -3,6 +3,7 @@
     height: 40px;
     background: url("../img/Logo.png");
     display: block;
+    margin-left: 3vw;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -331,13 +332,14 @@ ol{
     background: #341e49;
     line-height: 35px;
     margin-top: 80px;
+    position: absolute;
+    width: 100%;
 }
 .rodape-text{
     margin-left: 90px;
     color: #bbbbbb;
 }
 .rodape-title{
-    margin-top: 15px;
     margin-left: 90px;
     font-weight: 500;
     font-size: 18px;
@@ -347,6 +349,7 @@ ol{
     text-align: center;
     line-height: 40px;
     font-size: 17px;
+    background: white;
     
 }
 @media screen and (min-width: 1838px){
