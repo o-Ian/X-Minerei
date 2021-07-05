@@ -60,7 +60,7 @@ ol{
 }
 .superior{
     padding-top: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .menu{
     float: right;
@@ -147,12 +147,21 @@ ol{
 }
 .butao{
     padding-right: 30px;
+    margin-top: 35px;
 }
+
 .butao:hover{
     background: #24243f;
     border-end-end-radius: 10px;
     border-start-end-radius: 10px;
     
+}
+.butao-atual{
+    padding-right: 30px;
+    margin-top: 35px;
+    background: #3c3c68be;
+    border-end-end-radius: 10px;
+    border-start-end-radius: 10px;
 }
 .menu-lado{
     display: flex;
@@ -162,7 +171,31 @@ ol{
     border-start-end-radius: 30px;
     box-shadow: 1px 1px 10px #26243F;
     margin-top: 5%;
-    padding-top: 4%;
+    padding-top: 2%;
     padding-bottom: 4%;
+    margin-right: 13%;
+    
 
+}
+.box-cima{
+    display: flex;
+    position: absolute;
+    margin-top: 5.3%;
+    margin-left: 140px;
+    flex-direction: column;
+    background: #151423;
+    box-shadow: 5px 5px 10px #26243F;
+    padding: 20px;
+    padding-right: 8%;
+    border-radius: 10px;
+}
+.titulo{
+    font-size: 37.5px;
+    font-weight: bold;
+    color: white;
+}
+.box-cima-desc{
+    font-size: 15.5px;
+    color: #BDDAFF;
+    margin-top: 20px;
 }
