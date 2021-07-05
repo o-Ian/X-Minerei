@@ -199,3 +199,15 @@ ol{
     color: #BDDAFF;
     margin-top: 20px;
 }
+.linha-input{
+    display: flex;
+    margin-top: 240px;
+    margin-left: 150px;
+    padding-right: 300px;
+}
+.combo-box-title{
+    color: white;
+}
+select:invalid{
+    color: gray;
+}
