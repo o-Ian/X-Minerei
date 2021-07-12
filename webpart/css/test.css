@@ -231,6 +231,8 @@ select:invalid{
 }
 .box-hashrate{
     position: absolute;
+    margin-top: 30px;
+    margin-left: 170px;
     background: #151423;
     padding: 32px;
     padding-right: 90px;
@@ -238,12 +240,17 @@ select:invalid{
 }
 .box-potencia{
     position: absolute;
+    margin-top: 30px;
+    margin-left: 600px;
     background: #151423;
     padding: 32px;
     padding-right: 90px;
     border-radius: 23px;
 }
 .box-energia{
+    position: absolute;
+    margin-top: 240px;
+    margin-left: 170px;
     background: #151423;
     padding: 32px;
     padding-right: 90px;
@@ -251,63 +258,12 @@ select:invalid{
 }
 .box-preco{
     position: absolute;
+    margin-top: 240px;
+    margin-left: 600px;
     background: #151423;
     padding: 32px;
     padding-right: 50px;
     border-radius: 23px;
-}
-.boxs{
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 13px;
-    margin-left: 140px;
-    justify-content: space-evenly;
-}
-.box-itens  {
-    margin: 10px;
-    margin-left: 50px;
-    padding: 30px;
-    padding-right: 90px;
-    padding-bottom: 20px;
-    padding-top: 25px;
-    background: #151423;
-    border-radius: 23px;
-}
-.box-itens2{
-    margin: 10px;
-    margin-left: 43px;
-    padding: 30px;
-    padding-left: 40px;
-    padding-right: 85px;
-    padding-bottom: 20px;
-    padding-top: 25px;
-    background: #151423;
-    border-radius: 23px;
-}
-.box-itens3{
-    margin: 10px;
-    margin-left: 43px;
-    padding: 30px;
-    padding-left: 40px;
-    padding-right: 85px;
-    padding-bottom: 20px;
-    padding-top: 25px;
-    background: #151423;
-    border-radius: 23px;
-}
-.box-itens4{
-    margin: 10px;
-    margin-left: 50px;
-    padding: 30px;
-    padding-right: 56px;
-    padding-bottom: 20px;
-    padding-top: 25px;
-    background: #151423;
-    border-radius: 23px;
-}
-.break{
-    flex-basis: 100%;
-    height: 0;
 }
 .box-hashrate-title{
     color: #fff;
@@ -321,21 +277,20 @@ select:invalid{
     color: #fff;
     background: #1a1930;
     font-size: 20px;
-    margin-top: 30px;
+    margin-top: 45px;
     width: 90px;
     border: 1px;
     height: 30px;
+    
 }
 .mhs{
     display: flex;
     flex-direction: row;;
 }
-.inputs{
-}
 .input-group-addon{
     margin-left: 10px;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     background: #1D1923;
     padding: 13px 23px 13px 23px;
     border-radius: 10px;
@@ -343,25 +298,15 @@ select:invalid{
 .input-group-addon-esquerda{
     margin-right: 10px;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     background: #1D1923;
     padding: 13px 23px 13px 23px;
     border-radius: 10px;
 }
-.input-button-position{
-    
+.boxs{
+    display: flex;
+    flex-wrap: wrap;
 }
-.input-button{
-    font-size: 19px;
-    color: white;
-    background: #374D90;
-    border: none;
-    padding: 15px;
-    padding-left: 30px;
-    padding-right: 40px;
-    border-radius: 15px;
-}
-/**}
 @media screen and (max-width: 900px){
     .box-potencia{
         margin-left: 520px;
@@ -381,4 +326,11 @@ select:invalid{
     .box-energia{
         padding-right: 40px;
     }
+}
+.imgs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
