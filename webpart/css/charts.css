@@ -163,22 +163,20 @@ ol{
     border-start-end-radius: 10px;
 }
 .menu-lado{
-    display: flex;
     position: absolute;
+    left: 0;
     background: #151423;
     border-end-end-radius: 30px;
     border-start-end-radius: 30px;
     box-shadow: 1px 1px 10px #26243F;
-    margin-top: 5%;
+    margin-top: 79px;
     padding-top: 2%;
     padding-bottom: 4%;
-    margin-right: 13%;
 }
 .box-cima{
     display: flex;
     position: absolute;
-    margin-top: 5.3%;
-    margin-left: 140px;
+    margin-top: 79px;
     flex-direction: column;
     background: #151423;
     box-shadow: 5px 5px 10px #26243F;
@@ -199,8 +197,6 @@ ol{
 .linha-input{
     display: flex;
     margin-top: 240px;
-    margin-left: 150px;
-    padding-right: 300px;
 }
 .combo-box-title{
     color: white;
@@ -218,7 +214,7 @@ select:invalid{
 .box-quantidade-title{
     font-size: 16px;
     color: white;
-    margin-left: 23vw;
+    margin-left: 317px;
     margin-right: 10px;
     max-width: 23vw;
 }
@@ -257,10 +253,10 @@ select:invalid{
     border-radius: 23px;
 }
 .boxs{
+    max-width: 800px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 13px;
-    margin-left: 140px;
     justify-content: space-evenly;
 }
 .box-itens  {
@@ -348,18 +344,135 @@ select:invalid{
     padding: 13px 23px 13px 23px;
     border-radius: 10px;
 }
-.input-button-position{
-    
-}
 .input-button{
     font-size: 19px;
     color: white;
     background: #374D90;
-    border: none;
+    border: 1px;
     padding: 15px;
-    padding-left: 30px;
-    padding-right: 40px;
+    padding-left: 40px;
+    padding-right: 60px;
     border-radius: 15px;
+    cursor: pointer;
+    margin-left: 36px;
+    margin-top: 15px;
+}
+.input-button:hover{
+    border: 1px solid #223b86;
+
+}
+.img-button{
+    position: absolute;
+    margin-top: 4px;
+    padding-left: 110px;
+}
+.img-button2{
+    position: absolute;
+    margin-top: 6px;
+    padding-left: 170px;
+}
+.menu-esquerdo{
+    position: absolute;
+    left: 0;
+    margin-left: 160px;
+}
+.menu-direito{
+    position: absolute;
+    right: 0;
+    margin-top: 85px;
+    background: #0d0c225b;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-left: 40px;
+    padding-top: 20px;
+    max-width: 540px;
+}
+.menu-general-title{
+    color: #fff;
+    font-size: 21px;
+    font-weight: 700;
+}
+.details-button{
+    font-size: 19px;
+    color: white;
+    background: #151423;
+    border: 1px;
+    padding: 10px;
+    padding-left: 18px;
+    padding-right: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #26243F;
+    margin-left: 130px;
+}
+.linha-1{
+    display: flex;
+    flex-direction: row;
+    margin-right: 70px;
+    align-items: center;
+}
+.box-itens-rigth1{
+    margin: 10px;
+    padding: 30px;
+    padding-bottom: 20px;
+    padding-top: 25px;
+    background: #7A40F2;
+    border-radius: 22px;
+}
+.box-itens-rigth2{
+    margin: 10px;
+    padding: 30px;
+    padding-bottom: 20px;
+    padding-top: 25px;
+    background: #00A4FA;
+    border-radius: 22px;
+}
+.box-itens-rigth3{
+    margin: 10px;
+    padding: 30px;
+    padding-bottom: 20px;
+    padding-top: 25px;
+    padding-right: 26px;
+    background: #5C2D6C;
+    border-radius: 22px;
+}
+.box-itens-rigth4{
+    margin: 10px;
+    padding: 30px;
+    padding-bottom: 20px;
+    padding-top: 25px;
+    padding-right: 26px;
+    background: #50887b;
+    border-radius: 22px;
+}
+.box-hashrate-title-rigth{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    margin-top: 20px;
+}
+.img-position-box-rigth{
+    margin-right: 17px;
+}
+.input-group-addon-box-rigth{
+    color: #fff;
+    font-size: 16px;
+    background: #261d3575;
+    padding: 13px 23px 13px 23px;
+    border-radius: 10px;
+}
+.linha-box-rigth{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.boxes-rigth{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 /**}
 @media screen and (max-width: 900px){
