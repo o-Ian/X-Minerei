@@ -110,7 +110,7 @@ ol{
 .rodape{
     background: #341e49;
     line-height: 35px;
-    margin-top: 1000px;
+    margin-top: 1400px;
     width: 100%;
     bottom: 0;
 }
@@ -142,7 +142,15 @@ ol{
     margin-left: 3vw;
 }
 #myChart{
-    margin-top: 100px;
+    background: #151423;
+    border: solid 1px #26243F;
+    box-shadow: 1px 1px 10px #26243F;
+    padding: 0px;
+    border-radius: 28px;
+    padding-bottom: 10px;
+    margin-top: 21px;
+    margin-left: 10px;
+    margin-right: 51px;
 }
 .butao{
     padding-right: 30px;
@@ -410,6 +418,7 @@ select:invalid{
     flex-direction: row;
     margin-right: 70px;
     align-items: center;
+    margin-bottom: 7px;
 }
 .box-itens-rigth1{
     margin: 10px;
@@ -437,10 +446,12 @@ select:invalid{
     border-radius: 22px;
 }
 .box-itens-rigth4{
-    margin: 10px;
+    position: absolute;
+    margin-top: 157px;
+    margin-left: 255px;
     padding: 30px;
-    padding-bottom: 20px;
-    padding-top: 25px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     padding-right: 26px;
     background: #50887b;
     border-radius: 22px;
@@ -448,6 +459,13 @@ select:invalid{
 .box-hashrate-title-rigth{
     display: flex;
     flex-direction: column;
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    margin-top: 20px;
+}
+.box-hashrate-title-rigth4{
     color: #fff;
     font-weight: bold;
     font-size: 17px;
@@ -473,6 +491,56 @@ select:invalid{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.menu-indicators-title{
+    color: #fff;
+    font-size: 21px;
+    font-weight: 700;
+}
+.linha-2{
+    display: flex;
+    flex-direction: row;
+    margin-right: 70px;
+    margin-top: 15px;
+    align-items: center;
+}
+.box-indicators{
+    display: flex;
+    flex-direction: row;
+    background: #151423;
+    border-radius: 28px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 21px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 51px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    border: solid 1px #26243F;
+    box-shadow: 1px 1px 10px #26243F;
+}
+.box-indicators-title{
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: 18px;
+    letter-spacing: 0.14px;
+    margin-bottom: 25px;
+}
+.box-indicators-porc{
+    color: #8A88B7;
+    text-align: center;
+    font-size: 19px;
+}
+.box-indicators1{
+    width: 30%;
+}
+.menu-graph-title{
+    color: #fff;
+    font-size: 21px;
+    font-weight: 700;
 }
 /**}
 @media screen and (max-width: 900px){

@@ -332,5 +332,16 @@ select:invalid{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+}
+.box-hashrate-title-rigth4{
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    margin-top: 20px;
+}
+.box-itens-rigth4{
+    position: absolute;
+    background: #50887b;
+    border-radius: 22px;
 }

@@ -94,6 +94,7 @@ RS_GPUPrice = float(input('Qual o preço da placa de vídeo?: '))
 # Recalculating PowerCoast
 choicelist = []
 c = datetime.date.today().year - 1
+c = datetime.date.today().year - 1
 cont = len(IPCA)-1
 AllData['PowerCoast'] = PowerCoast
 for i in range(len(IPCA)):
@@ -126,6 +127,7 @@ AllData['USD_Coast'] = Power * SuffixMult * AllData['PowerCoast'] * 24
 AllData['USD_Profit/day'] = AllData['USD_Revenue'] - AllData['USD_Coast']
 AllData['USD_Profit/month'] = AllData['USD_Profit/day'] * 30
 
+AllData['Cost/Revenue_%'] = AllData['USD_Coast']/AllData['USD_Revenue']
 # Putting together AllData and GPUPrice
 AllData['Date(UTC)'] = AllData['Date(UTC)'].astype('datetime64')
 

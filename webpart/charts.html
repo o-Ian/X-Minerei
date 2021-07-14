@@ -124,10 +124,32 @@
                 <label for="" class="box-hashrate-title-rigth">Faturamento<br>médio/mês</label>            
             </div>
             <div class="box-itens-rigth4">
-                <label for="" class="box-hashrate-title-rigth">Se paga em 8 meses</label>            
+                <label for="" class="box-hashrate-title-rigth4">Se paga em 8 meses</label>            
             </div>
         </section>
-        
+        <div class="indicadores">
+            <div class="linha-2">
+                <h3 class="menu-indicators-title">Indicadores</h3>
+            </div>    
+            <div class="box-indicators">
+                <div class="box-indicators1">
+                    <h4 class="box-indicators-title">Gastos/<br>Faturamento</h4>
+                    <h2 class="box-indicators-porc">40,14%</h2>
+                </div>
+                <div class="box-indicators1">
+                    <h4 class="box-indicators-title">Lucro/<br>Faturamento</h4>
+                    <h2 class="box-indicators-porc">40,14%</h2>
+                </div>
+                <div class="box-indicators1">
+                    <h4 class="box-indicators-title">Custo da peça/<br>Retorno</h4>
+                    <h2 class="box-indicators-porc">40,14%</h2>
+                </div>
+            </div>
+        </div>
+        <div class="graph">
+            <h3 class="menu-graph-title">Consumo de energia</h3>
+            <canvas id="myChart" width="400px" height="200px"></canvas>
+        </div>
         
 
     </div>
@@ -147,11 +169,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/chart.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('#gpu').select2();
-    });
-    </script>
+    <script src="js/selectgpu.js"></script>
 
 </body>
 </html>
