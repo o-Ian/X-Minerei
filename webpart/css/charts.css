@@ -141,16 +141,14 @@ ol{
     display: block;
     margin-left: 3vw;
 }
-#myChart{
+#chart{
     background: #151423;
     border: solid 1px #26243F;
     box-shadow: 1px 1px 10px #26243F;
-    padding: 0px;
     border-radius: 28px;
     padding-bottom: 10px;
     margin-top: 21px;
-    margin-left: 10px;
-    margin-right: 51px;
+    justify-content: center;
 }
 .butao{
     padding-right: 30px;

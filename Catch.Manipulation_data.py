@@ -127,7 +127,7 @@ AllData['USD_Coast'] = Power * SuffixMult * AllData['PowerCoast'] * 24
 AllData['USD_Profit/day'] = AllData['USD_Revenue'] - AllData['USD_Coast']
 AllData['USD_Profit/month'] = AllData['USD_Profit/day'] * 30
 
-AllData['Cost/Revenue_%'] = AllData['USD_Coast']/AllData['USD_Revenue']
+AllData['Indicador'] = AllData['USD_Coast']/AllData['USD_Revenue']
 # Putting together AllData and GPUPrice
 AllData['Date(UTC)'] = AllData['Date(UTC)'].astype('datetime64')
 
@@ -203,7 +203,7 @@ AllData['USD_GPUPrice'] = AllData['R$_GPUPrice'] / AllData['R$_DollarPrice']
 # Column that calcule how much months do you need to pay your investment
 AllData['Pays_itself/months'] = AllData['USD_GPUPrice']/AllData['USD_Profit/month']
 
-
+AllData['Date'] = AllData['Date(UTC)']
 # Last step
 dollarPrice.to_csv('Mineration_DATA.ETH/DollarPrice.csv')
 AllData.to_csv('Mineration_DATA.ETH/AllData.csv')

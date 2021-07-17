@@ -1,28 +1,40 @@
-const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-];
-const data = {
-  labels: labels,
-  datasets: [{
-    label: 'Gasto da energia/Faturamento',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
-  }]
-};
-const config = {
-  type: 'line',
-  data,
-  options: {}
-};  
-        // === include 'setup' then 'config' above ===
+d3.csv('http://127.0.0.1:5500/Mineration_DATA.ETH/AllData.csv')
+  .then(function (loadedData){
+  
+    let data = [];
+    let labels = [];
+    
+    for (let i = 0; i < loadedData.length; i++){
       
-        var myChart = new Chart(
-          document.getElementById('myChart'),
-          config
-        );
+
+      let indicators = (loadedData[i].Indicador*100);
+      let dates = (loadedData[i].Date);
+      data.push(indicators);
+      labels.push(dates);
+      
+    };
+    console.log(data);
+    console.log(labels);
+    let options = {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          label: 'Custo energia/faturamento',
+          fill: false,
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          pointRadius: 0,
+          pointHoverRadius: 0          
+        }]
+      }
+    }
+
+    let chart = new
+      Chart(document.getElementById('chart'), options);
+});
+
+
+  
+
