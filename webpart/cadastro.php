@@ -1,3 +1,19 @@
+<?php
+
+  if(isset($_POST['submit'])){
+
+    include_once('config.php');
+
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $result = mysqli_query($conection, 
+    "INSERT INTO USUARIOS(nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+  }
+  
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,21 +44,21 @@
     <div class = "container">
         <div class = "container_login">
           <h2 class="title-login">Cadastro</h2>
-          <form>
-                <input type="text" class="form-control" id="name_input" placeholder="Nome completo"> 
+          <form action="cadastro.php" method = "POST">
+              <input type="text" name = "nome" class="form-control" id="nome" placeholder="Nome completo"> 
 
-              <input type="email" class="form-control" id="email_input" placeholder="E-mail"> 
+              <input type="email" name = "email"  class="form-control" id="email" placeholder="E-mail"> 
    
-              <input type="password" class="form-control" id="senha_input" placeholder="Senha">
+              <input type="password" name = "senha" class="form-control" id="senha" placeholder="Senha"> 
 
-              <input type="password" class="form-control" id="senha_input" placeholder="Confirmar senha">
+              <input type="password" class="form-control" id="senhaconf" placeholder="Confirmar senha" required>
 
-              <a href = "login.html" class="n-tem"> Já tem uma conta? Faça login aqui </a>
+              <a href = "login.html" class="n-tem">Já tem uma conta? Faça login aqui</a>
 
-              <button type="submit" class="btn"> Continuar </button>
+              <input type="submit"  name="submit" id="submit" class="btn" value="Continuar"></button> 
           </form>
           <footer>
-            <span>Ou conecte-se com as redes socias</span>
+            <span>Ou conecte-se com as redes sociais</span>
             <div class="social-field-facebook">
               <a href="#">
                 <img src="img/facebook.png" alt="">
@@ -58,5 +74,6 @@
           </footer>
         </div> 
       </div>
+      <script src="js/validacao.js"></script>
 </body>
 </html>
