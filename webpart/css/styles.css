@@ -79,27 +79,34 @@ ol{
     margin: 0 50px;
     color: #1F1F1F;
     
-}   
+}
+.menu-li2{
+    float: left;
+    margin: 0 23px;
+    color: #1F1F1F;    
+}      
 .menu__link{
     text-decoration: none;
     font-size: 16px;
     color: #ffffff;
 }
+
 .bt_signin{
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid #201e3f;
+    background: #16152c;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 600;
-    color: rgb(11, 11, 14);
+    color: #fff;
     padding: 7px 20px;
     border-radius: 3.5px;
     margin-left: 30px;
 }
 .bt_signup{
     text-decoration: none;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 600;
-    color: rgb(0, 0, 0);
+    color: black;
     padding: 7px 20px;
     border-radius: 3.5px;
     background: #00E9C4;
@@ -492,6 +499,12 @@ ol{
         margin-left: 31%;
     }
 }
+@media screen and (max-width: 707px){
+    .menu-li2{
+        margin-top: 30px;
+    }
+}
+
 
 @media screen and (max-width: 684px) {
     .uni-bt{
@@ -589,3 +602,7 @@ ol{
         padding-left: 1%;
     }
 }
+@media screen and (max-width: 388px){
+    .menu-li2{
+        margin-bottom: 5px;
+    }

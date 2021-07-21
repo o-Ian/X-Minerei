@@ -540,6 +540,11 @@ select:invalid{
     font-size: 21px;
     font-weight: 700;
 }
+.graph-align{
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 40px;
+}
 /**}
 @media screen and (max-width: 900px){
     .box-potencia{

@@ -28,8 +28,37 @@ d3.csv('http://127.0.0.1:5500/Mineration_DATA.ETH/AllData.csv')
           pointRadius: 0,
           pointHoverRadius: 0          
         }]
-      }
+      },
+      options: {
+        plugins: {
+            legend: {
+                display: false,
+                text: 'Custom Chart Title'
+          },
+          title: {
+            display: true,
+            text: 'Gasto da energia/Faturamento',
+            color: '#fff',
+            padding: {
+              top: 11,
+              bottom: 11
+          },
+            font: {
+              weight: 'normal',
+              size: 13,
+              family: "'Montserrat', sans-serif"
+            },
+            
+          }
+        },
+      scales: {
+        y: {
+          max: 100
+        }
+      },
+      
     }
+  }
 
     let chart = new
       Chart(document.getElementById('chart'), options);

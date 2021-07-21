@@ -1,0 +1,243 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    background: #121220;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+p a {
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+ol{
+    text-decoration: none;
+}
+.logo-all{
+    float: left;
+
+}
+.logo{
+    width: 134px;
+    height: 40px;
+    background: url("../img/Logo.png");
+    display: block;
+    margin-left: 3vw;
+}
+.superior{
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+.menu{
+    float: right;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+.menu-li{
+    float: left;
+    margin: 0 50px;
+    color: #1F1F1F
+    
+}   
+.menu__link{
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffffe3;
+}
+.bt_signin{
+    border: 1px solid rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 600;
+    color: rgb(11, 11, 14);
+    padding: 7px 20px;
+    border-radius: 3.5px;
+    margin-left: 30px;
+}
+.bt_signup{
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    padding: 7px 20px;
+    border-radius: 3.5px;
+    background: #00E9C4;
+}
+.clear{
+    clear: both;
+}
+.center{
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+.container_login { /* caixa de login */
+
+    /* tamanho da caixa de login */
+    height: 400px;
+    width: 400px;
+
+    /* centralizar a caixa de login */
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    margin: auto;
+    padding: 10px 25px 35px 25px;
+
+    background: #1f1d3d;
+    box-shadow: 5px 5px 10px #26243f;
+    border-radius: 10px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+.form-control{
+    display:block;
+    width:100%;
+    height:calc(1.5em + .75rem + 2px);
+    font-size:1rem;
+    font-weight:400;
+    color: #d3d3d3;
+    background: #2b2853;
+    background-clip:padding-box;
+    border-radius:.25rem;
+    border:0;
+    margin: 15px 0 15px 0;
+    position: relative;
+    outline: none;
+}.form-control::placeholder{
+    color:rgba(134, 134, 134, 0.404);
+    margin-left: 15px;
+}
+form a{
+    font-size: 15px;
+    color: #41c0af;
+    transition: all 0.15s ease;
+}
+form a:hover{
+    letter-spacing: 0.2px;
+    
+}
+.btn{
+    margin-top: 25px;
+    padding: 10px 0px 10px 0px;
+    background: #151423;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    align-content: center;
+    transition: all 0.3s ease;
+}
+.btn:hover{
+    letter-spacing: 0.5px;
+    background: rgb(26, 50, 87);
+}
+.title-login{
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: relative;
+    margin-left: 15px;
+}
+.title-login::before{
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    bottom: -2px;
+    left: 0;
+    border-radius: 5px;
+    background: linear-gradient(to right, #415e96, rgb(29, 55, 90)) #121220;
+}
+footer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.85rem;
+}
+footer span{
+    text-align: center;
+    font-size: 15px;
+    color: rgb(211, 211, 211);
+}
+footer div{
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 5px;
+}
+footer div a{
+    color: #fff;
+    font-weight: 500;
+}
+.social-field-facebook{
+    display: flex;
+    flex-direction: row;
+    background: #1e3c72;
+    margin-top: 1rem;
+    padding: 8px;
+}
+.social-field-google{
+    display: flex;
+    align-items: center;
+    background: #1e6c72;
+    margin-top: 1rem;
+    padding: 8px;
+}
+footer div a{
+    display: flex;
+    align-items: center;
+}
+footer div a img{
+    margin: 0 10px;
+    width: 20px;
+}
