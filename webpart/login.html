@@ -28,10 +28,10 @@
     <div class = "container">
         <div class = "container_login">
           <h2 class="title-login">Login</h2>
-          <form>
-              <input type="email" class="form-control" id="email_input" placeholder="E-mail"> 
+          <form action="valida_login.php" method="POST"> 
+              <input type="email" name="email" class="form-control" id="email_input" placeholder="E-mail"> 
                 <div class="underline"></div>
-              <input type="password" class="form-control" id="senha_input" placeholder="Senha">
+              <input type="password" name="password" class="form-control" id="senha_input" placeholder="Senha">
                 <div class="underline"></div>
               <a href = "cadastro.html" class="n-tem"> Não tem cadastro? Cadastre-se aqui </a>
 
@@ -57,6 +57,6 @@
         </div> 
         
       </div>
-
+      <script src="js/validacao_login.js"></script>
 </body>
 </html>
