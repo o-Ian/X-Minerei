@@ -13,16 +13,36 @@
     <link rel="shortcut icon" href="./img/favicon.png">
 </head>
 <body>
-    <div class="center">
+    <div class="center" >
         <div class="superior">
             <a href="#" class="logo-all">
                 <i class="logo"></i>
             </a>
             <ul class="menu">
                 <li class="menu-li"><a href="#" class="menu__link">Início</a></li>
-                <li class="menu-li"><a href="charts.html" class="menu__link">Dashboard</a></li>
-                <li class="menu-li2"><a href="login.html" class="bt_signin">Login</a></li>
+                <li class="menu-li"><a href="charts.php" class="menu__link">Dashboard</a></li>
+                <?php
+                session_start();
+                if(!isset($_SESSION['email'])):
+              ?>
+                <li class="menu-li2"><a href="login.php" class="bt_signin">Login</a></li>
                 <li class="menu-li2"><a href="cadastro.html" class="bt_signup">Cadastro</a></li>
+              <?php
+                endif;
+              ?>
+              <?php
+                if(isset($_SESSION['email'])):
+              ?>
+                <li class="menu-li"><a href="#" class="menu__link"><img src="img/user (1).png" alt="" class="dropdown-main-image"></a>
+                    <ul>
+                        <li class="dropdown-itens"><img src="img/logout.png" alt="" class="dropdown-images"><a href="logout.php" class="dropdown-menu__link">Sair</a></li>
+                        <li class="dropdown-itens"><a href="#" class="dropdown-menu__link">Entrar</a></li>
+                        <li class="dropdown-itens"><a href="#" class="dropdown-menu__link">Manter-se</a></li>
+                    </ul>
+                </li>
+              <?php
+                endif;
+              ?>
             </ul>
         </div>
     </div>
@@ -42,7 +62,7 @@
                 <h2 class="title-apresentacao">Minere de forma inteligente.</h2>
                 <p class="sub-titulo">Insira seus dados e conheça detalhadamente tudo<br>sobre seu lucro e gastos, de graça.</p>
                 <div class="bt-position">
-                    <a href="charts.html" class="bt-text"><buttom class="uni-bt">Calcule seu lucro</buttom></a>
+                    <a href="charts.php" class="bt-text"><buttom class="uni-bt">Calcule seu lucro</buttom></a>
                 </div>
             </div>
         </div>
@@ -104,6 +124,6 @@
     </div>
         
     
-  
+  <script src="js/top-fixed.js"></script>
 </body>
 </html>

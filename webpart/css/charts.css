@@ -1,3 +1,10 @@
+.logo{
+    width: 134px;
+    height: 40px;
+    background: url("../img/Logo.png");
+    display: block;
+    margin-left: 3vw;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -56,29 +63,69 @@ ol{
 }
 .logo-all{
     float: left;
-
 }
 .superior{
+    position: absolute;
+    width: 83%;
     padding-top: 40px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    z-index: 3;
+    background: #121220;
 }
 .menu{
-    float: right;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin-right: 40px;
     margin-top: 10px;
+    float: right;
+    margin-right: 280px;
 }
 .menu-li{
     float: left;
     margin: 0 50px;
     color: #1F1F1F
     
+}
+.menu ul{
+    position: absolute;
+    background: #223b86;
+    border-radius: 5px;
+    padding: 10px;
+    visibility: hidden;
+   
+}
+.dropdown-itens{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 6px;
+    margin-left: 2px;    
 }   
+.dropdown-itens:hover{
+    background: rgb(39, 31, 145);
+}
+.dropdown-menu__link{
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+}
+.dropdown-images{
+    margin-right: 5px;
+}
+.dropdown-main-image{
+    margin-top: -10px;
+}
+.menu li:hover ul{
+    visibility: visible;
+}   
+.menu-li2{
+    float: left;
+    margin: 0 50px;
+    color: #1F1F1F;    
+}    
 .menu__link{
     text-decoration: none;
     font-size: 16px;
-    color: #ffffffe3;
+    color: #ffffff;
 }
 .bt_signin{
     border: 1px solid rgb(0, 0, 0);
@@ -99,13 +146,21 @@ ol{
     border-radius: 3.5px;
     background: #00E9C4;
 }
+.menu ul{
+    position: absolute;
+    
+}
+.menu ul:hover{
+    
+}
+
 .clear{
     clear: both;
 }
 .center{
-    max-width: 1100px;
     width: 100%;
     margin: 0 auto;
+    margin-left: 242px;
 }
 .rodape{
     background: #341e49;
@@ -175,14 +230,14 @@ ol{
     border-end-end-radius: 30px;
     border-start-end-radius: 30px;
     box-shadow: 1px 1px 10px #26243F;
-    margin-top: 79px;
+    margin-top: 115px;
     padding-top: 2%;
     padding-bottom: 4%;
 }
 .box-cima{
     display: flex;
     position: absolute;
-    margin-top: 79px;
+    margin-top: 115px;
     flex-direction: column;
     background: #151423;
     box-shadow: 5px 5px 10px #26243F;
@@ -385,7 +440,7 @@ select:invalid{
 .menu-direito{
     position: absolute;
     right: 0;
-    margin-top: 85px;
+    margin-top: 115px;
     background: #0d0c225b;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;

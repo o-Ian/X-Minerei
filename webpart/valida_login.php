@@ -1,8 +1,9 @@
 <?php
+session_start();
 include_once('config.php');
 
 if(empty($_POST['email']) || empty($_POST['password'])){
-    header('Location: login.html');
+    header('Location: login.php');
     exit();
 }
 
@@ -11,18 +12,18 @@ $password =  mysqli_real_escape_string($conection, $_POST['password']);
 
 $query = "select * from usuarios where email = '{$email}' and senha = '{$password}'";
 
-
 $result = mysqli_query($conection, $query);
 
 $row = mysqli_num_rows($result);
 
 echo $row;
 if($row == 1){
-    header('Location: charts.html');
-    $invalido = false;
+    $_SESSION['email'] = $email;
+    $_SESSION['senha'] = $password;
+    header('Location: charts.php');
 } 
 else{
-    $invalido =  true;
+    $_SESSION['not_find'] = true;
+    header('Location: login.php');
 }
-
 ?>

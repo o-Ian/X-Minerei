@@ -18,7 +18,6 @@ def inserir_linha(idx, df, df_inserir):
 
     return df
 
-
 ExistFile = False
 
 if os.path.isfile('Mineration_DATA.ETH/GPUPrice.csv'):

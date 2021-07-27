@@ -65,14 +65,19 @@ ol{
 
 }
 .superior{
+    position: fixed;
+    width: 83%;
     padding-top: 40px;
+    padding-bottom: 20px;
+    z-index: 3;
+    background: #121220;
 }
 .menu{
-    float: right;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin-right: 40px;
     margin-top: 10px;
+    float: right;
+    margin-right: 240px;
 }
 .menu-li{
     float: left;
@@ -90,7 +95,43 @@ ol{
     font-size: 16px;
     color: #ffffff;
 }
-
+.menu ul{
+    position: absolute;
+    background: #223b86;
+    border-radius: 5px;
+    padding: 10px;
+    visibility: hidden;
+   
+}
+.menu li:hover ul{
+    visibility: visible;
+}   
+.menu-li2{
+    float: left;
+    margin: 0 50px;
+    color: #1F1F1F;
+}
+.dropdown-main-image{
+    margin-top: -10px;
+}
+.dropdown-menu__link{
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+}
+.dropdown-itens{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 6px;
+    margin-left: 2px;    
+}   
+.dropdown-itens:hover{
+    background: rgb(39, 31, 145);
+}
+.dropdown-images{
+    margin-right: 5px;
+}
 .bt_signin{
     border: 1px solid #201e3f;
     background: #16152c;
@@ -366,6 +407,12 @@ ol{
 .copyright > p{
     color: #cacaca
 }
+.top-fixed{
+    position: fixed;
+    top: 0px;
+
+}
+
 @media screen and (min-width: 1838px){
     .image2{
         margin-left: 14%;
@@ -426,6 +473,9 @@ ol{
         width: 40%;
         display: inline-block;
     }
+    .menu{
+        margin-right: 0px;
+    }
 }
 @media screen and (max-width: 1343px){
     .texto-botoes{
@@ -444,6 +494,14 @@ ol{
     .texto2{
         padding-left: 30px;
         padding-top: 10px;
+    }
+}
+@media screen and (max-width: 1138px){
+    .menu-li{
+        margin: 0 35px;
+    }
+    .menu-li2{
+        margin: 0 40px;
     }
 }
 @media screen and (max-width: 1110px){
@@ -489,6 +547,12 @@ ol{
     }
     .title-apresentacao2{
         padding-left: 8%;
+    }
+}
+@media screen and (max-width: 870px){
+    .superior{
+        position: relative;
+        background: #00e9c200;
     }
 }
 @media screen and (max-width: 776px){

@@ -7,9 +7,10 @@
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+    
 
     $result = mysqli_query($conection, 
     "INSERT INTO usuarios(nome, email, senha) VALUES ('$nome', '$email', '$senha')"); 
   }
-  header('Location: login.html')
+  header('Location: login.php')
 ?>
