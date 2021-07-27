@@ -63,7 +63,3 @@ d3.csv('http://127.0.0.1:5500/Mineration_DATA.ETH/AllData.csv')
     let chart = new
       Chart(document.getElementById('chart'), options);
 });
-
-
-  
-

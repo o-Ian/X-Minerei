@@ -14,7 +14,7 @@ time, mark, audio, video {
 
 	margin: 0;
 	padding: 0;
-	border: 0;
+	
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
@@ -69,15 +69,19 @@ ol{
     margin-left: 3vw;
 }
 .superior{
+    position: fixed;
+    width: 100%;
     padding-top: 40px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    z-index: 3;
+    background: #121220;
 }
 .menu{
-    float: right;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin-right: 40px;
     margin-top: 10px;
+    float: right;
+    margin-right: 520px;
 }
 .menu-li{
     float: left;
@@ -150,7 +154,7 @@ form{
     background: #2b2853;
     background-clip:padding-box;
     border-radius:.25rem;
-    border:0;
+    border: 0px;
     margin: 15px 0 15px 0;
     position: relative;
     outline: none;
@@ -244,4 +248,8 @@ footer div a{
 footer div a img{
     margin: 0 10px;
     width: 20px;
+}
+
+.errorInput{
+    border: 1px solid rgba(255, 0, 76, 0.767) !important;
 }

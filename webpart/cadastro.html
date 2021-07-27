@@ -15,12 +15,12 @@
 <body>
     <div class="center">
         <div class="superior">
-            <a href="#" class="logo-all">
+            <a href="index.php" class="logo-all">
                 <i class="logo"></i>
             </a>
             <ul class="menu">
-                <li class="menu-li"><a href="index.html " class="menu__link">Início</a></li>
-                <li class="menu-li"><a href="charts.html" class="menu__link">Dashboard</a></li>
+                <li class="menu-li"><a href="index.php " class="menu__link">Início</a></li>
+                <li class="menu-li"><a href="charts.php" class="menu__link">Dashboard</a></li>
             </ul>
         </div>
     </div>
@@ -28,21 +28,21 @@
     <div class = "container">
         <div class = "container_login">
           <h2 class="title-login">Cadastro</h2>
-          <form>
-                <input type="text" class="form-control" id="name_input" placeholder="Nome completo"> 
+          <form action="adiciona_user.php" method = "POST">
+              <input type="text" name = "nome" class="form-control" id="nome" placeholder="Nome completo" required> 
 
-              <input type="email" class="form-control" id="email_input" placeholder="E-mail"> 
+              <input type="email" name = "email"  class="form-control" id="email" placeholder="E-mail" required> 
    
-              <input type="password" class="form-control" id="senha_input" placeholder="Senha">
+              <input type="password" name = "senha" class="form-control" id="senha" placeholder="Senha" required> 
 
-              <input type="password" class="form-control" id="senha_input" placeholder="Confirmar senha">
+              <input type="password" class="form-control" id="senhaconf" placeholder="Confirmar senha" required>
 
-              <a href = "login.html" class="n-tem"> Já tem uma conta? Faça login aqui </a>
+              <a href = "login.php" class="n-tem">Já tem uma conta? Faça login aqui</a>
 
-              <button type="submit" class="btn"> Continuar </button>
+              <input type="submit"  name="submit" id="submit" class="btn" value="Continuar">
           </form>
           <footer>
-            <span>Ou conecte-se com as redes socias</span>
+            <span>Ou conecte-se com as redes sociais</span>
             <div class="social-field-facebook">
               <a href="#">
                 <img src="img/facebook.png" alt="">
@@ -58,5 +58,6 @@
           </footer>
         </div> 
       </div>
+      <script src="js/validacao_cadastro.js"></script>
 </body>
 </html>

@@ -69,15 +69,19 @@ ol{
     margin-left: 3vw;
 }
 .superior{
+    position: fixed;
+    width: 100%;
     padding-top: 40px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    z-index: 3;
+    background: #121220;
 }
 .menu{
-    float: right;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin-right: 40px;
     margin-top: 10px;
+    float: right;
+    margin-right: 520px;
 }
 .menu-li{
     float: left;
@@ -150,7 +154,7 @@ form{
     border-radius:.25rem;
     border:0;
     margin: 15px 0 15px 0;
-    position: relative;
+
     outline: none;
 }.form-control::placeholder{
     color:rgba(134, 134, 134, 0.404);
@@ -241,3 +245,16 @@ footer div a img{
     margin: 0 10px;
     width: 20px;
 }
+.errorInput{
+    border: 1px solid rgba(255, 0, 76, 0.767) !important;
+}
+.error{
+    display: flex;
+    left: 35%;
+    top: 5%;
+    position: absolute;
+    color: #fff;
+    background: rgba(255, 0, 76, 0.767);
+    padding: 16px;
+    border-radius: 4px;
+  }

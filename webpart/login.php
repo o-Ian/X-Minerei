@@ -14,25 +14,35 @@
 </head>
 <body>
     <div class="center">
-        <div class="superior">
-            <a href="index.html" class="logo-all">
+        <header class="superior">
+            <a href="index.php" class="logo-all">
                 <i class="logo"></i>
             </a>
             <ul class="menu">
-                <li class="menu-li"><a href="index.html " class="menu__link">Início</a></li>
-                <li class="menu-li"><a href="charts.html" class="menu__link">Dashboard</a></li>
+                <li class="menu-li"><a href="index.php " class="menu__link">Início</a></li>
+                <li class="menu-li"><a href="charts.php" class="menu__link">Dashboard</a></li>
             </ul>
-        </div>
+        </header>
     </div>
 
     <div class = "container">
         <div class = "container_login">
           <h2 class="title-login">Login</h2>
-          <form>
-              <input type="email" class="form-control" id="email_input" placeholder="E-mail"> 
-                <div class="underline"></div>
-              <input type="password" class="form-control" id="senha_input" placeholder="Senha">
-                <div class="underline"></div>
+          <?php
+            session_start();
+            if(isset($_SESSION['not_find'])):
+          ?>
+          <div class="error">
+            E-mail ou senha inválidos
+          </div>
+          <?php
+            endif;
+            unset($_SESSION['not_find']);
+          ?>
+          <form action="valida_login.php" method="POST"> 
+              <input type="email" name="email" class="form-control" id="email_input" placeholder="E-mail"> 
+              
+              <input type="password" name="password" class="form-control" id="senha_input" placeholder="Senha">
               <a href = "cadastro.html" class="n-tem"> Não tem cadastro? Cadastre-se aqui </a>
 
               <button type="submit" class="btn"> Continuar </button>
@@ -57,6 +67,6 @@
         </div> 
         
       </div>
-
+      <script src="js/validacao_login.js"></script>
 </body>
 </html>
