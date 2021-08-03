@@ -164,10 +164,7 @@ include_once('ur_logged.php');
             <div class="graph-align">
                 <canvas id="chart" width="400px" height="250px"></canvas>
             </div>
-
         </div>
-        
-
     </div>
 
     <!--<div>
@@ -187,7 +184,7 @@ include_once('ur_logged.php');
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/selectgpu.js"></script>
-
+        
 
 </body>
 </html>

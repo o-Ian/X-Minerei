@@ -17,8 +17,8 @@ session_start();
     $query_id = "SELECT * FROM usuarios where email = '$email' and senha = '$senha'";
     $dados = mysqli_query($conection, $query_id);
     $row = mysqli_fetch_array($dados,MYSQLI_ASSOC);
-    $id = $row["id"];
-
+    $id = $row['id'];
+    $_SESSION['id'] = $id;
     $result = mysqli_query($conection, 
     "INSERT INTO inputs(id_user, GPU, qntd, hashrate, potencia_w, tarifa_energia_real, preco) VALUES ('$id', '$GPU',' $GPU_qntd', '$hashrate',' $potencia_w', '$tarifa_energia', '$preco_GPU')");
     
