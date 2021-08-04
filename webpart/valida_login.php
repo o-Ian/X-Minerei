@@ -20,6 +20,8 @@ echo $row;
 if($row == 1){
     $_SESSION['email'] = $email;
     $_SESSION['senha'] = $password;
+    $row2 = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $_SESSION['id'] = $row2['id'];
     header('Location: charts.php');
 } 
 else{

@@ -2,42 +2,13 @@
 <html lang="pt-br">
 
   <head>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-     // load the visualization library from Google and set a listener
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-// this has to be a global function
-function drawChart() {
-   // grab the CSV
-   $.get("E:/Logiciel/GitHub/X-Minerei/Mineration_DATA.ETH/AllData.csv", function(csvString) {
-      // transform the CSV string into a 2-dimensional array
-      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-
-      // this new DataTable object holds all the data
-      var data = new google.visualization.arrayToDataTable(arrayData);
-
-      // this view can select a subset of the data at a time
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0,1]);
-
-     // set chart options
-     var options = {
-        title: "A Chart from a CSV!",
-        hAxis: {title: data.getColumnLabel(0), minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
-        vAxis: {title: data.getColumnLabel(1), minValue: data.getColumnRange(1).min, maxValue: data.getColumnRange(1).max},
-        legend: 'none'
-     };
-
-     // create the chart object and draw it
-     var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
-     chart.draw(view, options);
-  });
-}
-    </script>
+  </head>
   </head>
   <body>
-    <!-- Identify where the chart should be drawn. -->
-    <canvas id="chart"></canvas>
+    <span id="conteudo"></span>
+    <script src="data-manipulation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/danfojs@0.2.7/lib/bundle.min.js"></script>
+
   </body>
