@@ -23,23 +23,26 @@ $power_w = $row2['potencia_w_total'];
 $total_cost_GPU = $row2['preco_total'];
 
 
-// Making array 
+// Making arrays 
 $result_columns = "SELECT * from mineration_data";
 $result = mysqli_query($conection, $result_columns);
 $PowerCost_list = array();
 $ETH_made_day_list = array();
 $Date_UTC = array();
-$USD_Revenue = array();
+$Revenue_BRL = array();
+$Cost_BRL = array();
+$Profit_day_BRL = array();
 $cont = 0;
 while($row = mysqli_fetch_assoc($result)){
     array_push($PowerCost_list, $row['inflacao'] * $power_cost . "<br>");
-    array_push($ETH_made_day_list, (((($hashrate*1000000)*(1-(1)/100))/($row['networkDifficulty']*1000000000000))*$row['ethperday'])*24  . "<br>");
+    $calculo = (((($hashrate*1000000)*(1-(1)/100))/($row['networkDifficulty']*1000000000000))*$row['ethperday'])*24;
+    array_push($ETH_made_day_list, $calculo . "<br>");
+    array_push($Revenue_BRL, $row['ethPrice_BRL'] * $calculo . "<br>");
+    array_push($Cost_BRL, $power_w * 0.001 * ($row['inflacao'] * $power_cost) * 24 . "<br>");
+    array_push($Profit_day_BRL, ($row['ethPrice_BRL'] * $calculo) - ($power_w * 0.001 * ($row['inflacao'] * $power_cost) * 24)  . "<br>");
+
+
 }
-while($row = mysqli_fetch_assoc($result)){
-    //array_push($USD_Revenue, $row['ethPrice_usd'] * $ETH_made_day_list[$cont] . "<br>");
-    print_r($cont);
-    $cont = $cont + 1;
-}
-//print_r($USD_Revenue);
+print_r($Profit_day_BRL);
 
 ?>
