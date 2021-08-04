@@ -78,11 +78,14 @@ IPCA = conversorjsontocsv('Mineration_DATA.ETH/IPCA.json')
 
 Date = ETHPerDay['Date(UTC)']
 
-# Creating dataset that group all files
+# Creating dataset that group all filesa
 AllData = pd.DataFrame(ETHPerDay)
 
 AllData['NetworkDifficulty[TH/s]'] = NetworkDifficulty['Difficulty[TH/s]']
+
 AllData['ETHPriceUSD'] = ETHPriceUSD['ETHPrice_USD']
+
+
 
 # Input data from user
 HashUsuario = float(input('Qual o seu hashrate [Mh/s]?: '))
@@ -93,7 +96,6 @@ RS_GPUPrice = float(input('Qual o preço da placa de vídeo?: '))
 
 # Recalculating PowerCoast
 choicelist = []
-c = datetime.date.today().year - 1
 c = datetime.date.today().year - 1
 cont = len(IPCA)-1
 AllData['PowerCoast'] = PowerCoast
@@ -120,14 +122,6 @@ condicionlist = [AllData['Date(UTC)'].dt.year == 2020,
 AllData['Inflação'] = np.select(condicionlist, choicelist, default=1)
 AllData['PowerCoast'] = PowerCoast * AllData['Inflação']
 
-# Calculating profit
-AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
-AllData['USD_Revenue'] = AllData['ETHPriceUSD'] * AllData['ETH/dia']
-AllData['USD_Coast'] = Power * SuffixMult * AllData['PowerCoast'] * 24
-AllData['USD_Profit/day'] = AllData['USD_Revenue'] - AllData['USD_Coast']
-AllData['USD_Profit/month'] = AllData['USD_Profit/day'] * 30
-
-AllData['Indicador'] = AllData['USD_Coast']/AllData['USD_Revenue']
 # Putting together AllData and GPUPrice
 AllData['Date(UTC)'] = AllData['Date(UTC)'].astype('datetime64')
 
@@ -174,9 +168,19 @@ AllData['R$_DollarPrice'].fillna(method='ffill', inplace=True)
 # Putting Price and Date(UTC) column from AllData on dollarPrice dataframe
 dollarPrice['R$_DollarPrice'] = AllData['R$_DollarPrice']
 dollarPrice['Date(UTC)'] = AllData['Date(UTC)']
+AllData['ETHPriceBRL'] = AllData['ETHPriceUSD'] * AllData['R$_DollarPrice']
 
 # Putting GPU Price from user on csv file
 AllData._set_value(len(AllData)-1, 'R$_GPUPrice', RS_GPUPrice)
+
+# Calculating profit
+AllData['ETH/dia'] = (calculateProfit(HashUsuario, AllData['NetworkDifficulty[TH/s]'], AllData['ETHPerDay'])) * 24
+AllData['USD_Revenue'] = AllData['ETHPriceBRL'] * AllData['ETH/dia']
+AllData['USD_Coast'] = Power * SuffixMult * AllData['PowerCoast'] * 24
+AllData['USD_Profit/day'] = AllData['USD_Revenue'] - AllData['USD_Coast']
+AllData['USD_Profit/month'] = AllData['USD_Profit/day'] * 30
+
+AllData['Indicador'] = AllData['USD_Coast']/AllData['USD_Revenue']
 
 # Creating new column (relation between Network Difficulty with the last Network Difficulty)
 Last_Difficulty = AllData['NetworkDifficulty[TH/s]'].iloc[-1]
@@ -193,15 +197,15 @@ AllData['R$_GPUPrice'] = RS_GPUPrice * AllData['Multiple_Difficulty/LastDifficul
 # Conditional structure to use inflation as a multiplicator when date is equal or less than 2017-09-12
 condicionlist = [AllData['Date(UTC)'] <= '2017-09-12'
                  ]
-choicelist = [AllData['R$_GPUPrice'].loc[775] * AllData['Inflação']
-              ]
+choicelist = [AllData['R$_GPUPrice'].loc[775] * AllData['Inflação']]
+
 AllData['R$_GPUPrice'] = np.select(condicionlist, choicelist, default=AllData['R$_GPUPrice'])
 
 # GPU Price conversion (real to dollar)
 AllData['USD_GPUPrice'] = AllData['R$_GPUPrice'] / AllData['R$_DollarPrice']
 
 # Column that calcule how much months do you need to pay your investment
-AllData['Pays_itself/months'] = AllData['USD_GPUPrice']/AllData['USD_Profit/month']
+AllData['Pays_itself/months'] = AllData['R$_GPUPrice']/AllData['USD_Profit/month']
 
 AllData['Date'] = AllData['Date(UTC)']
 # Last step
