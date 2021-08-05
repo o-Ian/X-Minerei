@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once('config.php');
 
 // Catching id user
@@ -65,6 +64,46 @@ while($row = mysqli_fetch_assoc($result)){
     }
     array_push($Pays_itself_months, $GPU_Price_unit/ ($calculo_profit_day * 30) . "<br>");
 }
-print_r($Cost_day_BRL);
+// Making profit day average of the past 6 months
+$avg_profit_day_list = array_slice($Profit_day_BRL, -181, 181);
+$avg_profit_day = array_sum($avg_profit_day_list)/count($avg_profit_day_list);
+$avg_profit_day = number_format($avg_profit_day, 2);
+$avg_profit_day = str_replace(',', '', $avg_profit_day);
+$avg_profit_day = str_replace('.', ',', $avg_profit_day);
+
+// Making cost day average of the past 6 months
+$avg_cost_day_list = array_slice($Cost_day_BRL, -181, 181);
+$avg_cost_day = array_sum($avg_cost_day_list)/count($avg_cost_day_list);
+$avg_cost_day = number_format($avg_cost_day, 2);
+$avg_cost_day = str_replace(',', '', $avg_cost_day);
+$avg_cost_day = str_replace('.', ',', $avg_cost_day);
+
+// Making revenue day average of the past 6 months
+$avg_revenue_day_list = array_slice($Revenue_BRL, -181, 181);
+$avg_revenue_day = array_sum($avg_revenue_day_list)/count($avg_revenue_day_list);
+$avg_revenue_day = number_format($avg_revenue_day, 2);
+$avg_revenue_day = str_replace(',', '', $avg_revenue_day);
+$avg_revenue_day = str_replace('.', ',', $avg_revenue_day);
+
+// Making pay itself month average of the past 3 months
+$avg_payItself_day_list = array_slice($Pays_itself_months, -92, 92);
+$avg_payItself_day = array_sum($avg_payItself_day_list)/count($avg_payItself_day_list);
+$avg_payItself_day = number_format($avg_payItself_day, 1);
+$avg_payItself_day = str_replace(',', '', $avg_payItself_day);
+$avg_payItself_day = str_replace('.', ',', $avg_payItself_day);
+
+// Indicators
+// Costs/Revenue
+$cost_revenue_indicator = array_sum($avg_cost_day_list) / array_sum($avg_revenue_day_list) * 100;
+$cost_revenue_indicator = number_format($cost_revenue_indicator, 2);
+
+// Profit/Revenue
+$profit_revenue_indicator = array_sum($avg_profit_day_list) / array_sum($avg_revenue_day_list) * 100;
+$profit_revenue_indicator = number_format($profit_revenue_indicator, 2);
+
+// GPU Price/Return
+$Revenue_15_months = array_slice($Revenue_BRL, -471, 471);
+$gpuPrice_return_indicator = $total_cost_GPU/array_sum($Revenue_15_months);
+$gpuPrice_return_indicator = number_format($gpuPrice_return_indicator, 2);
 
 ?>

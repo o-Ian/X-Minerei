@@ -1,5 +1,6 @@
 <?php
 include_once('ur_logged.php');
+include_once('data-manipulation.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -118,26 +119,26 @@ include_once('ur_logged.php');
             <div class="box-itens-rigth1">
                 <div class="linha-box-rigth">
                     <img src="img/lucro-icon.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth">R$000,00</span>
+                    <span class="input-group-addon-box-rigth">R$ <?=$avg_profit_day;?></span>
                 </div>
-                <label for="" class="box-hashrate-title-rigth">Lucro médio/mês</label>
+                <label for="" class="box-hashrate-title-rigth">Lucro médio/dia</label>
             </div>
             <div class="box-itens-rigth2">
                 <div class="linha-box-rigth">
                     <img src="img/baixo-custo 1.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth">R$000,00</span>
+                    <span class="input-group-addon-box-rigth">R$ <?=$avg_cost_day;?></span>
                 </div>
-                <label for="" class="box-hashrate-title-rigth">Gastos médio/mês</label>            
+                <label for="" class="box-hashrate-title-rigth">Gastos médio/dia</label>            
             </div>
             <div class="box-itens-rigth3">
                 <div class="linha-box-rigth">
                     <img src="img/money-bag.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth">R$000,00</span>
+                    <span class="input-group-addon-box-rigth">R$ <?=$avg_revenue_day;?></span>
                 </div>
-                <label for="" class="box-hashrate-title-rigth">Faturamento<br>médio/mês</label>            
+                <label for="" class="box-hashrate-title-rigth">Faturamento<br>médio/dia</label>            
             </div>
             <div class="box-itens-rigth4">
-                <label for="" class="box-hashrate-title-rigth4">Se paga em 8 meses</label>            
+                <label for="" class="box-hashrate-title-rigth4">Se paga em <?=$avg_payItself_day;?> meses</label>            
             </div>
         </section>
         <div class="indicadores">
@@ -147,15 +148,15 @@ include_once('ur_logged.php');
             <div class="box-indicators">
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Gastos/<br>Faturamento</h4>
-                    <h2 class="box-indicators-porc">40,14%</h2>
+                    <h2 class="box-indicators-porc"><?=$cost_revenue_indicator;?>%</h2>
                 </div>
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Lucro/<br>Faturamento</h4>
-                    <h2 class="box-indicators-porc">40,14%</h2>
+                    <h2 class="box-indicators-porc"><?=$profit_revenue_indicator;?>%</h2>
                 </div>
                 <div class="box-indicators1">
-                    <h4 class="box-indicators-title">Custo da peça/<br>Retorno</h4>
-                    <h2 class="box-indicators-porc">40,14%</h2>
+                    <h4 class="box-indicators-title">Custo das peças/<br>Retorno</h4>
+                    <h2 class="box-indicators-porc"><?=$gpuPrice_return_indicator;?></h2>
                 </div>
             </div>
         </div>

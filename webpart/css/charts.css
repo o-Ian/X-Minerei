@@ -475,6 +475,7 @@ select:invalid{
 }
 .box-itens-rigth1{
     margin: 10px;
+    margin-left: 0px;
     padding: 30px;
     padding-bottom: 20px;
     padding-top: 25px;
@@ -491,6 +492,8 @@ select:invalid{
 }
 .box-itens-rigth3{
     margin: 10px;
+    margin-right: 16px;
+    margin-left: 0px;
     padding: 30px;
     padding-bottom: 20px;
     padding-top: 25px;
@@ -499,13 +502,14 @@ select:invalid{
     border-radius: 22px;
 }
 .box-itens-rigth4{
-    position: absolute;
-    margin-top: 157px;
-    margin-left: 255px;
-    padding: 30px;
+    margin: 10px;
+    margin-bottom: 100px;
+    margin-top: 20px;
+    padding: 25px;
     padding-bottom: 15px;
     padding-top: 15px;
-    padding-right: 26px;
+    padding-left: 17px;
+    padding-right: 17px;
     background: #50887b;
     border-radius: 22px;
 }
@@ -516,12 +520,12 @@ select:invalid{
     font-weight: bold;
     font-size: 17px;
     line-height: 20px;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 .box-hashrate-title-rigth4{
     color: #fff;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 20px;
     margin-top: 20px;
 }
