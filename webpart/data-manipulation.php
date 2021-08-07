@@ -4,11 +4,24 @@ include_once('config.php');
 // Catching id user
 $id = $_SESSION['id'];
 
+
 // Catching inputs user
+$query = "SELECT * from inputs where id_user = '$id'";   
+$data = mysqli_query($conection, $query);
+$qntd_rows = mysqli_num_rows($data);
+
+$avg_profit_day = '00,00';
+$avg_cost_day = '00,00';
+$avg_revenue_day = '00,00';
+$avg_payItself_day = '0,0';
+$cost_revenue_indicator = '00,00';
+$profit_revenue_indicator = '00,00';
+$gpuPrice_return_indicator = '00,00';
+
+if($qntd_rows >= 1){
 $query = "SELECT * from usuarios_total where id = '$id'";   
 $data = mysqli_query($conection, $query);
 $row2 = mysqli_fetch_assoc($data);
-
 // Power cost total
 $power_cost = $row2['tarifa_energia_media'];
 
@@ -35,10 +48,11 @@ $Profit_month_BRL = array();
 $GPU_Price = array();
 $Pays_itself_months = array();
 $total_cost_GPU_position775 = $total_cost_GPU/3.196936374084848;
+$hashrate = $hashrate * 1000000;
 
 while($row = mysqli_fetch_assoc($result)){
     array_push($PowerCost_list, $row['inflacao'] * $power_cost . "<br>");
-    $calculo = (((($hashrate*1000000)*(1-(1)/100))/($row['networkDifficulty']*1000000000000))*$row['ethperday'])*24;
+    $calculo = ((($hashrate*(1-((1)/100)))/($row['networkDifficulty']*1000000000000))*($row['ethperday'])/$row['total_blocks'])* 3600 * 24;
     array_push($ETH_made_day_list, $calculo . "<br>");
     array_push($Revenue_BRL, $row['ethPrice_BRL'] * $calculo . "<br>");
     array_push($Cost_day_BRL, $power_w * 0.001 * ($row['inflacao'] * $power_cost) * 24 . "<br>");
@@ -102,8 +116,9 @@ $profit_revenue_indicator = array_sum($avg_profit_day_list) / array_sum($avg_rev
 $profit_revenue_indicator = number_format($profit_revenue_indicator, 2);
 
 // GPU Price/Return
-$Revenue_15_months = array_slice($Revenue_BRL, -471, 471);
-$gpuPrice_return_indicator = $total_cost_GPU/array_sum($Revenue_15_months);
+$Revenue_42_months = array_slice($Revenue_BRL, -1277, 1277);
+$gpuPrice_return_indicator = array_sum($Revenue_42_months)/$total_cost_GPU;
 $gpuPrice_return_indicator = number_format($gpuPrice_return_indicator, 2);
 
+}
 ?>

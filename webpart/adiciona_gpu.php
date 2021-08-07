@@ -1,8 +1,8 @@
 <?php
-session_start();
+ include_once('config.php');
   if(isset($_POST['submit2'])){
 
-    include_once('config.php');
+
 
     $GPU = $_POST['GPU'];
     $GPU_qntd = $_POST['GPU_qntd'];
@@ -19,6 +19,7 @@ session_start();
     $row = mysqli_fetch_array($dados,MYSQLI_ASSOC);
     $id = $row['id'];
     $_SESSION['id'] = $id;
+
     $result = mysqli_query($conection, 
     "INSERT INTO inputs(id_user, GPU, qntd, hashrate, potencia_w, tarifa_energia_real, preco) VALUES ('$id', '$GPU',' $GPU_qntd', '$hashrate',' $potencia_w', '$tarifa_energia', '$preco_GPU')");
     

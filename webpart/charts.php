@@ -155,8 +155,8 @@ include_once('data-manipulation.php');
                     <h2 class="box-indicators-porc"><?=$profit_revenue_indicator;?>%</h2>
                 </div>
                 <div class="box-indicators1">
-                    <h4 class="box-indicators-title">Custo das peças/<br>Retorno</h4>
-                    <h2 class="box-indicators-porc"><?=$gpuPrice_return_indicator;?></h2>
+                    <h4 class="box-indicators-title">Retorno/<br>Custo das peças</h4>
+                    <h2 class="box-indicators-porc"><?=$gpuPrice_return_indicator;?>x</h2>
                 </div>
             </div>
         </div>

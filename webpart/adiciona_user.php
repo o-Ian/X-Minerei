@@ -16,6 +16,7 @@
     $busca_id = "select id from usuarios where email = '{$email}' and senha = '{$senha}'";
     $result_id = mysqli_query($conection, $busca_id); 
     $row = mysqli_fetch_array($result_id);
+    $id = $row['id'];
   
     // Adding ID on usuarios_total table
 
