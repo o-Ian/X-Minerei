@@ -43,6 +43,7 @@ $ETH_made_day_list = array();
 $Date_UTC = array();
 $Revenue_BRL = array();
 $Cost_day_BRL = array();
+$EnergyCost_Revenue = array();
 $Profit_day_BRL = array();
 $Profit_month_BRL = array();
 $GPU_Price = array();
@@ -50,15 +51,25 @@ $Pays_itself_months = array();
 $total_cost_GPU_position775 = $total_cost_GPU/3.196936374084848;
 $hashrate = $hashrate * 1000000;
 
+
 while($row = mysqli_fetch_assoc($result)){
-    array_push($PowerCost_list, $row['inflacao'] * $power_cost . "<br>");
+    array_push($Date_UTC, $row['data_utc']);
+    array_push($PowerCost_list, $row['inflacao'] * $power_cost);
     $calculo = ((($hashrate*(1-((1)/100)))/($row['networkDifficulty']*1000000000000))*($row['ethperday'])/$row['total_blocks'])* 3600 * 24;
-    array_push($ETH_made_day_list, $calculo . "<br>");
-    array_push($Revenue_BRL, $row['ethPrice_BRL'] * $calculo . "<br>");
-    array_push($Cost_day_BRL, $power_w * 0.001 * ($row['inflacao'] * $power_cost) * 24 . "<br>");
-    $calculo_profit_day = ($row['ethPrice_BRL'] * $calculo) - ($power_w * 0.001 * ($row['inflacao'] * $power_cost) * 24);
-    array_push($Profit_day_BRL, $calculo_profit_day . "<br>");
-    array_push($Profit_month_BRL, $calculo_profit_day * 30 . "<br>");
+    $calculo_revenue = $row['ethPrice_BRL'] * $calculo;
+    if($calculo_revenue != 0){
+        $calculo_energy_cost_revenue = $calculo_energy_cost_day/$calculo_revenue*100;
+    }else{
+        $calculo_energy_cost_revenue = 0;
+    }
+    array_push($ETH_made_day_list, $calculo);
+    array_push($Revenue_BRL, $calculo_revenue);
+    $calculo_energy_cost_day = $power_w * 0.001 * ($row['inflacao'] * $power_cost) * 24;
+    array_push($Cost_day_BRL, $calculo_energy_cost_day);
+    $calculo_profit_day = ($calculo_revenue) - ($calculo_energy_cost_day);
+    array_push($Profit_day_BRL, $calculo_profit_day);
+    array_push($Profit_month_BRL, $calculo_profit_day * 30);
+    array_push($EnergyCost_Revenue, number_format($calculo_energy_cost_revenue, 2));
     $calculo_gpuprice = $total_cost_GPU * $row['multiple_gpuPrice'];
 
     if(array_key_exists(775, $GPU_Price)){
@@ -120,5 +131,7 @@ $Revenue_42_months = array_slice($Revenue_BRL, -1277, 1277);
 $gpuPrice_return_indicator = array_sum($Revenue_42_months)/$total_cost_GPU;
 $gpuPrice_return_indicator = number_format($gpuPrice_return_indicator, 2);
 
+$Date_UTC = json_encode($Date_UTC);
+$EnergyCost_Revenue = json_encode($EnergyCost_Revenue);
 }
 ?>

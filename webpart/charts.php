@@ -107,7 +107,9 @@ include_once('data-manipulation.php');
                 </section>
         </div>
             </form>
-            
+     <div class="devices">
+        <h2 class="devices-title">Minhas peças</h2>
+     </div>       
             
     </div>
     <div class="menu-direito">
@@ -179,12 +181,11 @@ include_once('data-manipulation.php');
                 <p>Copyright © 2021</p>
             </footer>
         </footer>
-    </div>-->
-
+    </div>-->    
+    <script src="js/selectgpu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/selectgpu.js"></script>
+    <?php include_once('js/chart.php') ?>
         
 
 </body>

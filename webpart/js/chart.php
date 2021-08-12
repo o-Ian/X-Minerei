@@ -1,19 +1,10 @@
-d3.csv('http://127.0.0.1:5500/Mineration_DATA.ETH/AllData.csv')
-  .then(function (loadedData){
-  
-    let data = [];
-    let labels = [];
-    
-    for (let i = 0; i < loadedData.length; i++){
-      
+<script>
+let data = <?=$EnergyCost_Revenue;?>;
+let labels = <?=$Date_UTC;?>;
 
-      let indicators = (loadedData[i].Indicador*100);
-      let dates = (loadedData[i].Date);
-      data.push(indicators);
-      labels.push(dates);
-      
-    };
     console.log(data);
+
+
     console.log(labels);
     let options = {
       type: 'bar',
@@ -53,7 +44,7 @@ d3.csv('http://127.0.0.1:5500/Mineration_DATA.ETH/AllData.csv')
         },
       scales: {
         y: {
-          max: 100
+            
         }
       },
       
@@ -62,4 +53,4 @@ d3.csv('http://127.0.0.1:5500/Mineration_DATA.ETH/AllData.csv')
 
     let chart = new
       Chart(document.getElementById('chart'), options);
-});
+</script>
