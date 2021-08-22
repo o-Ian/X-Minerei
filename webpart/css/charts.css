@@ -417,9 +417,10 @@ select:invalid{
     cursor: pointer;
     margin-left: 36px;
     margin-top: 15px;
+    transition: all 0.25s ease;
 }
 .input-button:hover{
-    border: 1px solid #223b86;
+    font-size: 20px;
 
 }
 .img-button{
@@ -602,6 +603,58 @@ select:invalid{
     display: flex;
     justify-content: flex-start;
     margin-right: 40px;
+}
+.devices{
+    position: relative;
+    margin-top: 25px;
+}
+.devices h2{
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.15px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.devices > div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: #0d0c225b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 260px;
+    width: 826.09px;
+}
+.devices_styles{
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 22px;
+    margin: 10px 25px 10px 25px;
+    
+}
+.devices_styles:first-child{
+    margin-left: 40px;
+}
+.devices_styles:nth-child(8){
+    margin-left: 40px;
+}
+.qtnd{
+    display: flex;
+    align-items: flex-start;
+}
+.nome_GPU{
+    font-weight: 600;
+}
+.img-excluir{
+    position: static;
+}
+.img-excluir:hover{
+    width: 17px;
+    height: 17px;
 }
 /**}
 @media screen and (max-width: 900px){

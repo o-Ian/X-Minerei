@@ -60,17 +60,17 @@ include_once('data-manipulation.php');
                     <select id="gpu" required style= "width: 280px" name="GPU">
                         <option value="" disabled selected hidden>Qual a sua placa de vídeo?</option>
                         <optgroup label="GTX">
-                            <option value="1050">GTX 1050</option>
-                            <option value="1060">GTX 1060</option>
-                            <option value="1080">GTX 1080</option>
+                            <option value="GTX 1050">GTX 1050</option>
+                            <option value="GTX 1060">GTX 1060</option>
+                            <option value="GTX 1080">GTX 1080</option>
                         </optgroup>
                         <optgroup label="AMD">
-                            <option value="1050">GTX 1050</option>
-                            <option value="1060">GTX 1060</option>
-                            <option value="1080">GTX 1080</option>
-                            <option value="1080">GTX 1080 TI</option>
-                            <option value="1050">GTX 1050 TI</option>
-                            <option value="1070">GTX 1070</option>
+                            <option value="GTX 1050">GTX 1050</option>
+                            <option value="GTX 1060">GTX 1060</option>
+                            <option value="GTX 1080">GTX 1080</option>
+                            <option value="GTX 1080">GTX 1080 TI</option>
+                            <option value="GTX 1050">GTX 1050 TI</option>
+                            <option value="GTX 1070">GTX 1070</option>
                         </optgroup>
                     </select>
                     <div class="quantidade">
@@ -108,7 +108,27 @@ include_once('data-manipulation.php');
         </div>
             </form>
      <div class="devices">
-        <h2 class="devices-title">Minhas peças</h2>
+        <h2>Minhas peças</h2>
+        <div>
+            <?php
+                include_once('config.php');
+                $_SESSION['id'] = $id;
+                $consulta = mysqli_query($conection,"SELECT * from inputs where id_user = '$id'");
+                $c = 0;
+                while ($row = mysqli_fetch_assoc($consulta)){
+                    $c = $c + 1;
+                    $id_input = $row['id_input'];
+                    echo "<div class ='devices_styles'>";
+                    echo "<div class = 'qtnd'>" . $row['qntd'] . "<br>" . "</div>";
+                    echo  "<a href='exclui_gpu.php?id=$id_input'><img src='img/trash.png' class = 'img-excluir' alt='' srcset=''> </a>";
+                    echo "<div class = 'nome_GPU'>" . $row['GPU'] . "<br>" . "</div>";
+                    echo "R$ " . $row['preco'] . "<br>";
+                    echo $row['hashrate'] . " Mh/s";
+                    echo "</div>";
+                }
+            ?>
+            <img src="i" alt="" srcset="">
+        </div>
      </div>       
             
     </div>
