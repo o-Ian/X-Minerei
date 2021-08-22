@@ -3,7 +3,7 @@ include_once('config.php');
 
 // Catching id user
 $id = $_SESSION['id'];
-
+echo $id;
 
 // Catching inputs user
 $query = "SELECT * from inputs where id_user = '$id'";   
@@ -134,4 +134,5 @@ $gpuPrice_return_indicator = number_format($gpuPrice_return_indicator, 2);
 $Date_UTC = json_encode($Date_UTC);
 $EnergyCost_Revenue = json_encode($EnergyCost_Revenue);
 }
+ 
 ?>

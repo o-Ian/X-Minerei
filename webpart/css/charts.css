@@ -629,6 +629,7 @@ select:invalid{
     width: 826.09px;
 }
 .devices_styles{
+    width: 10.2%;
     color: #fff;
     font-size: 14px;
     text-align: center;
@@ -639,7 +640,7 @@ select:invalid{
 .devices_styles:first-child{
     margin-left: 40px;
 }
-.devices_styles:nth-child(8){
+.devices_styles:nth-child(7){
     margin-left: 40px;
 }
 .qtnd{

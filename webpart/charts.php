@@ -109,25 +109,7 @@ include_once('data-manipulation.php');
             </form>
      <div class="devices">
         <h2>Minhas peças</h2>
-        <div>
-            <?php
-                include_once('config.php');
-                $_SESSION['id'] = $id;
-                $consulta = mysqli_query($conection,"SELECT * from inputs where id_user = '$id'");
-                $c = 0;
-                while ($row = mysqli_fetch_assoc($consulta)){
-                    $c = $c + 1;
-                    $id_input = $row['id_input'];
-                    echo "<div class ='devices_styles'>";
-                    echo "<div class = 'qtnd'>" . $row['qntd'] . "<br>" . "</div>";
-                    echo  "<a href='exclui_gpu.php?id=$id_input'><img src='img/trash.png' class = 'img-excluir' alt='' srcset=''> </a>";
-                    echo "<div class = 'nome_GPU'>" . $row['GPU'] . "<br>" . "</div>";
-                    echo "R$ " . $row['preco'] . "<br>";
-                    echo $row['hashrate'] . " Mh/s";
-                    echo "</div>";
-                }
-            ?>
-            <img src="i" alt="" srcset="">
+        <div id="conteudo">
         </div>
      </div>       
             
@@ -202,6 +184,24 @@ include_once('data-manipulation.php');
             </footer>
         </footer>
     </div>-->    
+    <script>
+        var qntd_result_pg = 12; // Quantidade de registros por página
+        var pagina = 1; // Inicia pela página 1
+        $(document).ready(function (){
+            listar_usuario(pagina, qntd_result_pg)
+        })
+
+        function listar_usuario(pagina, qntd_result_pg){
+            var dados = {
+                qntd_result_pg: qntd_result_pg,
+                pagina: pagina
+            }
+            $.post('listar_gpu.php', dados, function(retorna){
+                // Substitui o valor no seletor id = "conteudo"
+                $('#conteudo').html(retorna)
+            })
+        }
+    </script>
     <script src="js/selectgpu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
