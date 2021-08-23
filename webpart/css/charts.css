@@ -637,6 +637,11 @@ select:invalid{
     margin: 10px 25px 10px 25px;
     
 }
+
+#conteudo a{
+    text-decoration: none;
+    color: #fff;
+}
 .devices_styles:first-child{
     margin-left: 40px;
 }

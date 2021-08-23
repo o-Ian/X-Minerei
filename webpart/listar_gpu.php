@@ -34,9 +34,7 @@
     //Limitar o link antes e depois
     $max_links = 2;
 
-
-    echo "<a href = '#' onclick='listar_usuario(1, 12)'> Primeira </a>";
-
+    echo "<a href = '#' onclick='listar_usuario(1, 12)'> <img src='img/pontas-de-flecha-de-contorno-fino-a-esquerda.png' alt=''> </a>";
     
     for($pag_ant = $pagina - $max_links; $pag_ant<= $pagina - 1; $pag_ant++){
         if($pag_ant >= 1){
@@ -44,7 +42,14 @@
         }
     }
 
-    echo "<a href = '#' > $pagina </a>";
-    echo "<a href = '#' onclick='listar_usuario($quantidade_pg, 12)'> Última </a>"
+    echo $pagina;
+
+    for($pag_dps = $pagina + 1; $pag_dps <= $pagina + $max_links; $pag_dps++){
+        if($pag_dps <= $quantidade_pg){
+        echo "<a href = '#' onclick='listar_usuario($pag_dps, 12)'> $pag_dps </a>";
+        }
+    }
+
+    echo "<a href = '#' onclick='listar_usuario($quantidade_pg, 12)'><img src='img/pontas-de-flechas-direitas.png' alt='' srcset=''></a>"
     
 ?>
