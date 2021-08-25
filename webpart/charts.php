@@ -193,7 +193,7 @@ include_once('data-manipulation.php');
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-    <form action="" method="POST" class="form_update"> 
+    <form action="update_gpu.php" method="POST" class="form_update"> 
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fechar">X</span>
             </button>
             <span id = "infos_gpu">

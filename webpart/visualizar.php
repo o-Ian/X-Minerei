@@ -11,6 +11,7 @@ if(isset($_POST['id_input'])){
     $_SESSION['gpu_update'] = $gpu;
     $_SESSION['preco_update'] = $preco;
     $_SESSION['hashrate_update'] = $hashrate;
+    $_SESSION['id_input'] = $_POST['id_input'];
 
     echo "<div>Dispositivo: <select id='select_gpu_update' style= 'width: 280px' name='GPU_update'>
     <option value='$gpu' selected>$gpu</option>
