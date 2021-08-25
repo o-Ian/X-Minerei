@@ -447,12 +447,13 @@ select:invalid{
     border-bottom-left-radius: 15px;
     padding-left: 40px;
     padding-top: 20px;
-    max-width: 540px;
+    max-width: 580px;
 }
 .menu-general-title{
     color: #fff;
     font-size: 21px;
     font-weight: 700;
+    width: 28%;
 }
 .details-button{
     font-size: 19px;
@@ -466,6 +467,7 @@ select:invalid{
     cursor: pointer;
     border: 2px solid #26243F;
     margin-left: 130px;
+    width: 65%;
 }
 .linha-1{
     display: flex;
@@ -755,7 +757,7 @@ select:invalid{
     margin-left: 15px;
 }
 .btn{
-    margin-top: 25px;
+    margin-top: 10px;
     padding: 10px 0px 10px 0px;
     background: #151423;
     border: none;
@@ -766,10 +768,32 @@ select:invalid{
     align-content: center;
     transition: all 0.3s ease;
     padding: 10px;
+    margin-left: 30%;
 }
 .btn:hover{
     letter-spacing: 0.5px;
     background: rgb(26, 50, 87);
+}
+.errorInput{
+    border: 1px solid rgba(255, 0, 76, 0.767) !important;
+}
+.btn2{
+    margin-top: 10px;
+    padding: 10px 0px 10px 0px;
+    background: rgb(26, 50, 87);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    align-content: center;
+    transition: all 0.3s ease;
+    padding: 10px;
+    margin-left: 30%;
+}
+.btn2:hover{
+    letter-spacing: 0.5px;
+    background: rgb(20, 39, 68);
 }
 .form_update{
     display: flex;
@@ -940,7 +964,85 @@ button {
 .modal-dialog.modal-sm{
     margin-top: 25vh;
 }
-.
+
+
+#infos_gpu{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#infos_gpu div{
+    margin-bottom: 3px;
+    color: #fff;
+}
+#infos_gpu div:first-child{
+    margin-top: 23px;
+    margin-bottom: 14px;
+}
+#infos_gpu div:first-child h4{
+    margin-left: 6px;
+}
+.preco_update){
+    margin-bottom: 10px;
+}
+#infos_gpu div:last-child{
+    margin-bottom: 0px;
+}
+
+.form-gpu_update{
+    text-align: center;
+    width: 130px;
+    height: 35px;
+    font-size:1rem;
+    font-weight: 500;
+    color: #d3d3d3;
+    background: #151423;
+    background-clip:padding-box;
+    border-radius:.25rem;
+    border: 1px solid #37355c;
+    margin: 15px 0 15px 0;
+    outline: none;
+}
+.form-gpu_update:focus{
+    border: 2px solid #37355c;
+    box-shadow: 1px 1px 5px #000000;
+}
+.form-gpu_update2:focus{
+    border: 2px solid #37355c;
+    box-shadow: 1px 1px 5px #000000;
+}
+.form-gpu_update2{
+    text-align: center;
+    width: 80px;
+    height: 35px;
+    font-size:1rem;
+    font-weight:500;
+    color: #d3d3d3;
+    background: #151423;
+    background-clip:padding-box;
+    border-radius:.25rem;
+    border: 1px solid #37355c;
+    margin: 15px 0 15px 6px;
+    outline: none;
+}
+
+.label{
+    color: #fff;
+    font-weight: 600;
+}
+.input-group-addon-preco{
+    color: #fff;
+    font-size: 14px;
+    background: #1D1923;
+    border-radius: 10px;
+    padding: 7px;
+    margin-right: 5px;
+    margin-left: 8px;
+}
+.label-device{
+    margin-right: 6px;
+}
 /**}
 @media screen and (max-width: 900px){
     .box-potencia{

@@ -12,7 +12,7 @@ include_once('data-manipulation.php');
     <link rel="stylesheet" href="css/charts.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./img/favicon.png">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -194,23 +194,17 @@ include_once('data-manipulation.php');
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
     <form action="" method="POST" class="form_update"> 
-              <input type="email" name="email" class="form-control" id="email_input" placeholder="E-mail"> 
-              
-              <input type="password" name="password" class="form-control" id="senha_input" placeholder="Senha">
-              
-
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fechar">X</span>
             </button>
-              <span id = "GPU_name"></span>
-              <button type="submit" class="btn"> Atualizar </button>
+            <span id = "infos_gpu">
+              
         </form>
     </div>
   </div>
 </div>
-
-    
     <script>
         $(document).ready(function (){
+
             $(document).on('click', '.view-data', function(){
                 var id_input = $(this).attr("id") 
                 // Verificar se há valor no id
@@ -220,13 +214,39 @@ include_once('data-manipulation.php');
                     }
                     $.post('visualizar.php', dados, function(retorna){
                         // Carregar o conteúdo para o usuário
-                        $('#GPU_name').html(retorna)
-                        
+                        $('#infos_gpu').html(retorna)
+                        $('#select_gpu_update').select2({
+                            width: '160px'
+                        });
                     })
                 }
+                $(document).on('click', '#submit_update_gpu', function(){
+                    const select = document.getElementById('select_gpu_update')
+                    select_value = select.options[select.selectedIndex].value
+                    const preco = document.getElementById('preco_update_gpu')
+                    const hashrate = document.getElementById('hashrate_update')
+                    const cor_select = document.querySelectorAll('.select2-selection--single')
+                    select_certo = cor_select[1]
 
+
+                    if (select_value == "<?=$_SESSION['gpu_update'];?>" && preco.value == "<?=$_SESSION['preco_update'];?>" && hashrate.value == "<?=$_SESSION['hashrate_update'];?>"){
+                        console.log('NÃO É PRA DAR')
+                        select_certo.classList.add("errorInput")
+                        preco.classList.add("errorInput")
+                        hashrate.classList.add("errorInput")
+                        event.preventDefault()
+                    }   
+                    else{
+                        console.log('É PRA DAR')
+                        select_certo.classList.remove("errorInput")
+                        preco.classList.remove("errorInput")
+                        hashrate.classList.remove("errorInput")
+                    }
+
+                })
             })
         })
+                
     </script>
     <script>
         var qntd_result_pg = 12; // Quantidade de registros por página
@@ -247,6 +267,7 @@ include_once('data-manipulation.php');
         }
         
     </script>
+    
     <script src="js/selectgpu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
