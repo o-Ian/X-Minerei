@@ -14,6 +14,11 @@ include_once('data-manipulation.php');
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./img/favicon.png">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+
     <script 
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -107,11 +112,11 @@ include_once('data-manipulation.php');
                 </section>
         </div>
             </form>
-     <div class="devices">
-        <h2>Minhas peças</h2>
-        <div id="conteudo">
-        </div>
-     </div>       
+        <div class="devices" >
+            <h2>Minhas peças</h2>
+            <div id="conteudo">
+            </div>
+        </div>   
             
     </div>
     <div class="menu-direito">
@@ -184,6 +189,45 @@ include_once('data-manipulation.php');
             </footer>
         </footer>
     </div>-->    
+    <!-- Small modal -->
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <form action="" method="POST" class="form_update"> 
+              <input type="email" name="email" class="form-control" id="email_input" placeholder="E-mail"> 
+              
+              <input type="password" name="password" class="form-control" id="senha_input" placeholder="Senha">
+              
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fechar">X</span>
+            </button>
+              <span id = "GPU_name"></span>
+              <button type="submit" class="btn"> Atualizar </button>
+        </form>
+    </div>
+  </div>
+</div>
+
+    
+    <script>
+        $(document).ready(function (){
+            $(document).on('click', '.view-data', function(){
+                var id_input = $(this).attr("id") 
+                // Verificar se há valor no id
+                if(id_input !== ''){
+                    var dados = {
+                        id_input: id_input
+                    }
+                    $.post('visualizar.php', dados, function(retorna){
+                        // Carregar o conteúdo para o usuário
+                        $('#GPU_name').html(retorna)
+                        
+                    })
+                }
+
+            })
+        })
+    </script>
     <script>
         var qntd_result_pg = 12; // Quantidade de registros por página
         var pagina = 1; // Inicia pela página 1
@@ -201,6 +245,7 @@ include_once('data-manipulation.php');
                 $('#conteudo').html(retorna)
             })
         }
+        
     </script>
     <script src="js/selectgpu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>

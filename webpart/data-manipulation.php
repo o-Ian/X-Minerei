@@ -3,7 +3,6 @@ include_once('config.php');
 
 // Catching id user
 $id = $_SESSION['id'];
-echo $id;
 
 // Catching inputs user
 $query = "SELECT * from inputs where id_user = '$id'";   
