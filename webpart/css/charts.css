@@ -973,18 +973,21 @@ button {
     flex-wrap: wrap;
 }
 #infos_gpu div{
-    margin-bottom: 3px;
     color: #fff;
 }
-#infos_gpu div:first-child{
+#infos_gpu :nth-child(3){
+    margin-top: 10px;
+}
+
+.select-modal-box{
     margin-top: 23px;
-    margin-bottom: 14px;
 }
 #infos_gpu div:first-child h4{
     margin-left: 6px;
 }
-.preco_update){
-    margin-bottom: 10px;
+.preco_update{
+    margin-top: -4px;
+    margin-bottom: -2px;
 }
 #infos_gpu div:last-child{
     margin-bottom: 0px;
@@ -1026,7 +1029,10 @@ button {
     margin: 15px 0 15px 6px;
     outline: none;
 }
-
+.att-qntd-modal-box{
+    width: 50px;
+    height: 30px;
+}
 .label{
     color: #fff;
     font-weight: 600;

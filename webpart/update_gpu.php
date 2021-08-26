@@ -4,6 +4,7 @@ include_once('config.php');
 $hashrate_update = $_POST['hashrate_update'];
 $GPU_update = $_POST['GPU_update'];
 $preco_update_gpu = $_POST['preco_update_gpu'];
+$qntd = $_POST['qntd_update'];
 
 $query = '';
 
@@ -12,6 +13,10 @@ if($hashrate_update != $_SESSION['hashrate_update']){
     $query .= "hashrate = $hashrate_update, ";
     $c = $c + 1;
 
+}
+if($qntd != $_SESSION['qntd_update']){
+    $query .= "qntd = '$qntd', ";
+    $c = $c + 1;
 }
 if($GPU_update != $_SESSION['gpu_update']){
     $query .= "GPU = '$GPU_update', ";
@@ -31,8 +36,6 @@ else{
 $id_input = $_SESSION['id_input'];
 
 $query_full = "UPDATE inputs set " . $query . " where id_input = $id_input";
-
-print_r($query_full);
 
 $loko = mysqli_query($conection, $query_full);
 
