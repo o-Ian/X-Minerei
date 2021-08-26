@@ -14,7 +14,7 @@ if($hashrate_update != $_SESSION['hashrate_update']){
 
 }
 if($GPU_update != $_SESSION['gpu_update']){
-    $query .= "GPU = $GPU_update, ";
+    $query .= "GPU = '$GPU_update', ";
     $c = $c + 1;
 }
 if($preco_update_gpu != $_SESSION['preco_update']){
@@ -32,6 +32,7 @@ $id_input = $_SESSION['id_input'];
 
 $query_full = "UPDATE inputs set " . $query . " where id_input = $id_input";
 
+print_r($query_full);
 
 $loko = mysqli_query($conection, $query_full);
 

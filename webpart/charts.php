@@ -202,16 +202,21 @@ include_once('data-manipulation.php');
     </div>
   </div>
 </div>
+
     <script>
         $(document).ready(function (){
-
             $(document).on('click', '.view-data', function(){
-                var id_input = $(this).attr("id") 
+                var gpu = "<?$_SESSION['gpu_update'];?>";
+                console.log(gpu)
+
+                var id_input = $(this).attr("id");
+                console.log(id_input);
                 // Verificar se há valor no id
                 if(id_input !== ''){
                     var dados = {
                         id_input: id_input
                     }
+                    
                     $.post('visualizar.php', dados, function(retorna){
                         // Carregar o conteúdo para o usuário
                         $('#infos_gpu').html(retorna)
@@ -228,9 +233,7 @@ include_once('data-manipulation.php');
                     const cor_select = document.querySelectorAll('.select2-selection--single')
                     select_certo = cor_select[1]
 
-
-                    if (select_value == "<?=$_SESSION['gpu_update'];?>" && preco.value == "<?=$_SESSION['preco_update'];?>" && hashrate.value == "<?=$_SESSION['hashrate_update'];?>"){
-                        console.log('NÃO É PRA DAR')
+                    if (select_value == "<?=$_SESSION['gpu_update'];?>" && preco.value == <?=$_SESSION['preco_update'];?> && hashrate.value == <?=$_SESSION['hashrate_update'];?>){
                         select_certo.classList.add("errorInput")
                         preco.classList.add("errorInput")
                         hashrate.classList.add("errorInput")

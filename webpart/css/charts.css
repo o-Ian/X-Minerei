@@ -1043,6 +1043,12 @@ button {
 .label-device{
     margin-right: 6px;
 }
+.view-data{
+    transition: all 0.25s ease;
+}
+.view-data:hover{
+    transform: scale(1.1);
+}
 /**}
 @media screen and (max-width: 900px){
     .box-potencia{
