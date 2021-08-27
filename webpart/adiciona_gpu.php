@@ -1,15 +1,12 @@
 <?php
  include_once('config.php');
-  if(isset($_POST['submit2'])){
 
-
-
-    $GPU = $_POST['GPU'];
-    $GPU_qntd = $_POST['GPU_qntd'];
-    $hashrate = $_POST['hashrate'];
-    $potencia_w = $_POST['potencia_w'];
-    $tarifa_energia = $_POST['tarifa_energia'];
-    $preco_GPU = $_POST['preco_GPU'];
+    $GPU = $_POST['select_adiciona_gpu'];
+    $GPU_qntd = $_POST['quantidade_adiciona_gpu']; 
+    $hashrate = $_POST['hashrate_adiciona_gpu'];
+    $potencia_w = $_POST['potencia_adiciona_gpu'];
+    $tarifa_energia = $_POST['tarifa_adiciona_gpu'];
+    $preco_GPU = $_POST['preco_gpu_adiciona_pgu'];
     $email = $_SESSION['email'];
     $senha = $_SESSION['senha'];
 
@@ -49,7 +46,6 @@
     "UPDATE usuarios_total
     set hashrateMhs_total = '$hashrateMhs_total',  potencia_w_total = '$potencia_w_total', preco_total = '$preco_total', tarifa_energia_media = '$tarifa_energia_real'
     where id = '$id'");
-  }
+    
   mysqli_close($conection);
-  header('Location: charts.php')
 ?>

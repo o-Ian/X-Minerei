@@ -6,6 +6,7 @@ $id = $_SESSION['id'];
 
 // Catching inputs user
 $query = "SELECT * from inputs where id_user = '$id'";   
+echo $id;
 $data = mysqli_query($conection, $query);
 $qntd_rows = mysqli_num_rows($data);
 
