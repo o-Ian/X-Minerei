@@ -62,8 +62,8 @@ include_once('ur_logged.php');
         <div class="inputs">
             <form action="adiciona_gpu.php" method="POST" id = "form_adiciona_pgu">
                 <div class="linha-input">
-                    <select id="gpu" required style= "width: 280px" name="GPU" data-placeholder="Select a state">
-                        <option value="default" selected hidden disabled>Qual a sua placa de vídeo?</option>
+                    <select id="gpu" required style= "width: 280px" name="GPU">
+                        <option value="default" selected hidden>Qual a sua placa de vídeo?</option>
                         <optgroup label="GTX">
                             <option value="GTX 1050">GTX 1050</option>
                             <option value="GTX 1060">GTX 1060</option>
@@ -129,26 +129,26 @@ include_once('ur_logged.php');
             <div class="box-itens-rigth1">
                 <div class="linha-box-rigth">
                     <img src="img/lucro-icon.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth">R$ <?=$avg_profit_day;?></span>
+                    <span class="input-group-addon-box-rigth" id= "avg_profit_day">R$ <?=$_SESSION['avg_profit_day']?></span>
                 </div>
                 <label for="" class="box-hashrate-title-rigth">Lucro médio/dia</label>
             </div>
             <div class="box-itens-rigth2">
                 <div class="linha-box-rigth">
                     <img src="img/baixo-custo 1.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth">R$ <?=$avg_cost_day;?></span>
+                    <span class="input-group-addon-box-rigth">R$ <?=$_SESSION['avg_cost_day'];?></span>
                 </div>
                 <label for="" class="box-hashrate-title-rigth">Gastos médio/dia</label>            
             </div>
             <div class="box-itens-rigth3">
                 <div class="linha-box-rigth">
                     <img src="img/money-bag.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth">R$ <?=$avg_revenue_day;?></span>
+                    <span class="input-group-addon-box-rigth">R$ <?=$_SESSION['avg_revenue_day'];?></span>
                 </div>
                 <label for="" class="box-hashrate-title-rigth">Faturamento<br>médio/dia</label>            
             </div>
             <div class="box-itens-rigth4">
-                <label for="" class="box-hashrate-title-rigth4">Se paga em <?=$avg_payItself_day;?> meses</label>            
+                <label for="" class="box-hashrate-title-rigth4">Se paga em <?=$_SESSION['avg_payItself_day'];?> meses</label>            
             </div>
         </section>
         <div class="indicadores">
@@ -158,15 +158,15 @@ include_once('ur_logged.php');
             <div class="box-indicators">
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Gastos/<br>Faturamento</h4>
-                    <h2 class="box-indicators-porc"><?=$cost_revenue_indicator;?>%</h2>
+                    <h2 class="box-indicators-porc"><?=$_SESSION['cost_revenue_indicator'];?>%</h2>
                 </div>
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Lucro/<br>Faturamento</h4>
-                    <h2 class="box-indicators-porc"><?=$profit_revenue_indicator;?>%</h2>
+                    <h2 class="box-indicators-porc"><?=$_SESSION['profit_revenue_indicator'];?>%</h2>
                 </div>
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Retorno/<br>Custo das peças</h4>
-                    <h2 class="box-indicators-porc"><?=$gpuPrice_return_indicator;?>x</h2>
+                    <h2 class="box-indicators-porc"><?=$_SESSION['gpuPrice_return_indicator'];?>x</h2>
                 </div>
             </div>
         </div>
@@ -254,6 +254,8 @@ include_once('ur_logged.php');
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <?php include_once('js/chart.php') ?>
     <script src="adiciona_gpu-ajax.js"></script>
+    <script src="js/visao_geral-ajax.js"></script>
+
 
 </body>
 </html>

@@ -6,7 +6,6 @@ $id = $_SESSION['id'];
 
 // Catching inputs user
 $query = "SELECT * from inputs where id_user = '$id'";   
-echo $id;
 $data = mysqli_query($conection, $query);
 $qntd_rows = mysqli_num_rows($data);
 
@@ -134,5 +133,26 @@ $gpuPrice_return_indicator = number_format($gpuPrice_return_indicator, 2);
 $Date_UTC = json_encode($Date_UTC);
 $EnergyCost_Revenue = json_encode($EnergyCost_Revenue);
 }
- 
+
+// Putting all data in an array
+$data_manipulation = array();
+$data_manipulation['avg_profit_day'] = $avg_profit_day;
+$data_manipulation['avg_cost_day'] = $avg_cost_day;
+$data_manipulation['avg_revenue_day'] = $avg_revenue_day;
+$data_manipulation['avg_payItself_day'] = $avg_payItself_day;
+$data_manipulation['cost_revenue_indicator'] = $cost_revenue_indicator;
+$data_manipulation['profit_revenue_indicator'] = $profit_revenue_indicator;
+$data_manipulation['gpuPrice_return_indicator'] = $gpuPrice_return_indicator;
+
+$_SESSION['avg_profit_day'] = $avg_profit_day;
+$_SESSION['avg_cost_day'] = $avg_cost_day;
+$_SESSION['avg_revenue_day'] = $avg_revenue_day;
+$_SESSION['avg_payItself_day'] = $avg_payItself_day;
+$_SESSION['cost_revenue_indicator'] = $cost_revenue_indicator;
+$_SESSION['profit_revenue_indicator'] = $profit_revenue_indicator;
+$_SESSION['gpuPrice_return_indicator'] = $gpuPrice_return_indicator;
+
+
+echo json_encode($data_manipulation);
+
 ?>

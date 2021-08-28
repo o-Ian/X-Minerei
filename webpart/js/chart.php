@@ -54,3 +54,5 @@ let labels = <?=$Date_UTC;?>;
     let chart = new
       Chart(document.getElementById('chart'), options);
 </script>
+
+<img src="../data-manipulation.php" alt="" srcset="">

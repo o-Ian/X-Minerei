@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#gpu').select2({
         placeholder: {
             id: 'default', // the value of the option
-            text: 'Select an option'
+            text: 'Qual sua placa de vídeo?'
           }
     });
 });

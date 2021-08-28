@@ -1,6 +1,6 @@
 $('#form_adiciona_pgu').submit(function(e){
     e.preventDefault()
-    console.log("VÁ TOM ANO CU ") 
+
     let form_adiciona_pgu = document.querySelector('#form_adiciona_pgu')
     let quantidade_adiciona_gpu = document.querySelector('#quantidade_adiciona_gpu')
     let hashrate_adiciona_gpu = document.querySelector('#hashrate_adiciona_gpu')
@@ -31,8 +31,7 @@ $('#form_adiciona_pgu').submit(function(e){
         $('#gpu').val('default').select2()
         $('#potencia_adiciona_gpu').val('')
         $('#tarifa_adiciona_gpu').val('')
-        $('#preco_gpu_adiciona_pgu').val('')
-        
+        $('#preco_gpu_adiciona_pgu').val('')      
 
     })
 })  
