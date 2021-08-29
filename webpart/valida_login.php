@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once('config.php');
 
 if(empty($_POST['email']) || empty($_POST['password'])){
@@ -22,11 +22,12 @@ if($row == 1){
     $_SESSION['senha'] = $password;
     $row2 = mysqli_fetch_array($result,MYSQLI_ASSOC);
     $_SESSION['id'] = $row2['id'];
-    include_once('data-manipulation.php');
     header('Location: charts.php');
+    include_once('data-manipulation.php');
+    
 } 
 else{
-    $_SESSION['not_find'] = true;
+    $_SESSION['not_find'] = true;   
     header('Location: login.php');
 }
 ?>

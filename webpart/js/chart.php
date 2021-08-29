@@ -1,6 +1,7 @@
 <script>
-let data = <?=$EnergyCost_Revenue;?>;
-let labels = <?=$Date_UTC;?>;
+let data = <?=$_SESSION['EnergyCost_Revenue'];?>;
+
+let labels = <?=$_SESSION['Date_UTC'];?>;
 
     console.log(data);
 
@@ -53,6 +54,21 @@ let labels = <?=$Date_UTC;?>;
 
     let chart = new
       Chart(document.getElementById('chart'), options);
-</script>
 
-<img src="../data-manipulation.php" alt="" srcset="">
+    /*$('#form_adiciona_pgu').submit(function(e){
+      $.post('atualizacao-chart.php', function(retorna){
+
+    console.log('TÁ ENTRANDO12313123')
+    obj_chart = JSON.parse(retorna);
+
+    chart.data.labels = retorna.Date_UTC;
+    chart.data.datasets[0].data = retorna.EnergyCost_Revenue;
+    chart.update();
+
+    console.log( retorna.Date_UTC);
+
+    console.log(retorna.EnergyCost_Revenue)
+
+    })
+  })*/
+</script>

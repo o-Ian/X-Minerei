@@ -130,8 +130,6 @@ $Revenue_42_months = array_slice($Revenue_BRL, -1277, 1277);
 $gpuPrice_return_indicator = array_sum($Revenue_42_months)/$total_cost_GPU;
 $gpuPrice_return_indicator = number_format($gpuPrice_return_indicator, 2);
 
-$Date_UTC = json_encode($Date_UTC);
-$EnergyCost_Revenue = json_encode($EnergyCost_Revenue);
 }
 
 // Putting all data in an array
@@ -143,6 +141,9 @@ $data_manipulation['avg_payItself_day'] = $avg_payItself_day;
 $data_manipulation['cost_revenue_indicator'] = $cost_revenue_indicator;
 $data_manipulation['profit_revenue_indicator'] = $profit_revenue_indicator;
 $data_manipulation['gpuPrice_return_indicator'] = $gpuPrice_return_indicator;
+$data_manipulation['Date_UTC'] = $Date_UTC;
+$data_manipulation['EnergyCost_Revenue'] = $EnergyCost_Revenue;
+
 
 $_SESSION['avg_profit_day'] = $avg_profit_day;
 $_SESSION['avg_cost_day'] = $avg_cost_day;
@@ -151,8 +152,9 @@ $_SESSION['avg_payItself_day'] = $avg_payItself_day;
 $_SESSION['cost_revenue_indicator'] = $cost_revenue_indicator;
 $_SESSION['profit_revenue_indicator'] = $profit_revenue_indicator;
 $_SESSION['gpuPrice_return_indicator'] = $gpuPrice_return_indicator;
-
-
+$_SESSION['Date_UTC'] = json_encode($Date_UTC);
+$_SESSION['EnergyCost_Revenue'] = json_encode($EnergyCost_Revenue);
+    
 echo json_encode($data_manipulation);
 
 ?>
