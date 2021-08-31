@@ -255,7 +255,7 @@ include_once('ur_logged.php');
     <?php include_once('js/chart.php'); ?>
     <script src="adiciona_gpu-ajax.js"></script>
     <script src="js/visao_geral-ajax.js"></script>
-    <script src="js/exclusão-post.js"></script>
+    <script src="js/excluir-gpu.js"></script>
 
 </body>
 </html>

@@ -1,9 +1,3 @@
-<?php 
-
-$id_gpu = $_GET['id']; 
-
-?>
-
 <script 
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -11,12 +5,14 @@ $id_gpu = $_GET['id'];
 </script>
 
 <script>
-     $('.img-excluir').click(function(e){  
+    console.log('CLICOU E TA ENTRANDO NA EXCLUSAO') 
+     $('.img-excluir').click(function(e){ 
+        console.log('CLICOU E TA ENTRANDO NA EXCLUSAO') 
         e.preventDefault()
+        console.log(e.dataset.idinput)
         console.log('CLICOU E TA ENTRANDO NA EXCLUSAO')
-        console.log(<?=$id_gpu;?>)
         //Mandando o $id_gpu para o arquivo exclui_gpu.php
-        $.ajax
+        /*$.ajax
     ({
         //Configurações
         type: 'POST',//Método que está sendo utilizado.
@@ -24,7 +20,7 @@ $id_gpu = $_GET['id'];
         url: 'exclui_gpu.php',//Indica a página que está sendo solicitada.        
         //Dados para envio
         data: {
-            id_gpu: <?=$id_gpu;?>
+            id_gpu: 
         }
     })
     //Fazer os cálculos e atualizá-los novamente
@@ -64,6 +60,6 @@ $id_gpu = $_GET['id'];
     
     
     
-    })     
+    })     */
     })
  </script>   

@@ -35,25 +35,3 @@ $('#form_adiciona_pgu').submit(function(e){
 
     })
 })  
-    
-
-
-
-/*form_adiciona_pgu.addEventListener('submit', function(event){
-    event.preventDefault()
-let dados = {
-    form_adiciona_pgu: form_adiciona_pgu.value,
-    quantidade_adiciona_gpu: quantidade_adiciona_gpu.value,
-    hashrate_adiciona_gpu: hashrate_adiciona_gpu.value,
-    potencia_adiciona_gpu: potencia_adiciona_gpu.value,
-    tarifa_adiciona_gpu: tarifa_adiciona_gpu.value,
-    preco_gpu_adiciona_pgu: preco_gpu_adiciona_pgu.value,
-    select_adiciona_gpu: select_adiciona_gpu.options[select_adiciona_gpu.selectedIndex].value
-    }
-    console.log(dados)
-
-var xmlhttp = new XMLHttpRequest()
-xmlhttp.open("POST", "adiciona_gpu.php", true)
-xmlhttp.send(dados)
-
-})*/

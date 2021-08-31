@@ -26,9 +26,9 @@
     $row2 = mysqli_fetch_array($result_usuarios_total);
 
     // Sum row2 data and input data user on usuarios_total 
-    $hashrateMhs_total = ($row2["hashrateMhs_total"] + $hashrate) * $GPU_qntd;
-    $potencia_w_total = ($row2["potencia_w_total"] + $potencia_w) * $GPU_qntd;
-    $preco_total = ($row2["preco_total"] + $preco_GPU) * $GPU_qntd;
+    $hashrateMhs_total = $row2["hashrateMhs_total"] + ($hashrate * $GPU_qntd);
+    $potencia_w_total = $row2["potencia_w_total"] + ($potencia_w * $GPU_qntd);
+    $preco_total = $row2["preco_total"] + ($preco_GPU * $GPU_qntd);
     
     // Calculating tarifa_energia
     $buscando_linhas = "SELECT id_user, preco, tarifa_energia_real, qntd from inputs where id_user= '$id'";

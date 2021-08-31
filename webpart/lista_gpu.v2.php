@@ -23,9 +23,14 @@
     while ($row = mysqli_fetch_assoc($consulta)){
         $c = $c + 1;
         $id_input = $row['id_input'];
+        $qntd = $row['qntd'];
+        $hashrate = $row['hashrate'];
+        $preco = $row['preco'];
+        $potencia_w = $row['potencia_w'];
+
         echo "<div class ='devices_styles animation_devices'>";
         echo "<div class = 'qtnd'>" . $row['qntd'] . "<br>" . "</div>";
-        echo  "<a href='exclui_gpu.php?id=$id_input'><img src='img/trash.png' class = 'img-excluir' alt='' srcset=''> </a>";
+        echo  "<a data-idinput = '$id_input' data-potencia_w = '$potencia_w' data-qntd = '$qntd' data-hashrate = '$hashrate' data-preco = '$preco' class='excluir'><img src='img/trash.png' class = 'img-excluir' alt='' srcset=''> </a>";
         echo  "<a><img src='img/caneta-roller.png' class = 'view-data' id=$id_input alt='' srcset='' data-toggle='modal' data-target='.bd-example-modal-sm'></a>";
         echo "<div class = 'nome_GPU'>" . $row['GPU'] . "<br>" . "</div>";
         echo "R$ " . $row['preco'] . "<br>";
@@ -75,4 +80,5 @@
     echo "<a onclick='listar_usuario($quantidade_pg, 12)'><img src='img/pontas-de-flechas-direitas.png' alt='' srcset=''></a>";
     echo "</div>";
     
+    $_SESSION['pagina_selecionada'] = $pagina;
 ?>

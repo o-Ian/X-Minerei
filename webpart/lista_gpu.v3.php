@@ -1,9 +1,16 @@
 <?php
     include_once('config.php');
     $id = $_SESSION['id'];
-    
-    $pagina = filter_input(INPUT_POST, 'pagina', FILTER_SANITIZE_NUMBER_INT);
-    $_SESSION['pagina_selecionada'] = $pagina;
+
+    //Paginação - Somar a quantidade de inputs
+
+    $resultado_pg = mysqli_query($conection, "SELECT COUNT(id_input) as num_result from inputs where id_user = $id");
+    $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+    //Qntd de paginas
+    $quantidade_pg = ceil($row_pg['num_result'] / 12);
+
+    $pagina = $_SESSION['pagina_selecionada'];
     $qntd_result_pg = filter_input(INPUT_POST, 'qntd_result_pg', FILTER_SANITIZE_NUMBER_INT);
     //calcular o inicio visualização
     $inicio = ($pagina * $qntd_result_pg) - $qntd_result_pg;
@@ -20,7 +27,7 @@
         $hashrate = $row['hashrate'];
         $preco = $row['preco'];
         $potencia_w = $row['potencia_w'];
-    
+
         echo "<div class ='devices_styles animation_devices'>";
         echo "<div class = 'qtnd'>" . $row['qntd'] . "<br>" . "</div>";
         echo  "<a data-idinput = '$id_input' data-potencia_w = '$potencia_w' data-qntd = '$qntd' data-hashrate = '$hashrate' data-preco = '$preco' class='excluir'><img src='img/trash.png' class = 'img-excluir' alt='' srcset=''> </a>";
@@ -30,13 +37,6 @@
         echo $row['hashrate'] . " Mh/s";
         echo "</div>";
     }
-    //Paginação - Somar a quantidade de inputs
-
-    $resultado_pg = mysqli_query($conection, "SELECT COUNT(id_input) as num_result from inputs where id_user = $id");
-    $row_pg = mysqli_fetch_assoc($resultado_pg);
-
-    //Qntd de paginas
-    $quantidade_pg = ceil($row_pg['num_result'] / 12);
 
     //Limitar o link antes e depois
     $max_links = 1;
@@ -80,4 +80,5 @@
     echo "<a onclick='listar_usuario($quantidade_pg, 12)'><img src='img/pontas-de-flechas-direitas.png' alt='' srcset=''></a>";
     echo "</div>";
     
+    $_SESSION['pagina_selecionada'] = $pagina;
 ?>
