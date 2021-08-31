@@ -35,6 +35,27 @@
         chart.update();
 
 
+        //Atualizar conteudo das placas de vídeo
 
-})
+
+
+
     })
+    console.log('ATUALIZA AI')
+    var qntd_result_pg = 12; // Quantidade de registros por página
+    var pagina = 1; // Inicia pela página 1
+    $(document).ready(function (){
+        listar_usuario(pagina, qntd_result_pg)
+    })
+
+    function listar_usuario(pagina, qntd_result_pg){
+        var dados = {
+            qntd_result_pg: qntd_result_pg,
+            pagina: pagina
+        }
+        $.post('lista_gpu.v2.php', dados, function(retorna){
+            // Substitui o valor no seletor id = "conteudo"
+            $('#conteudo').html(retorna)
+        })
+    }
+})

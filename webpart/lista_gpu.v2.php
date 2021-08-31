@@ -2,7 +2,15 @@
     include_once('config.php');
     $id = $_SESSION['id'];
 
-    $pagina = filter_input(INPUT_POST, 'pagina', FILTER_SANITIZE_NUMBER_INT);
+    //Paginação - Somar a quantidade de inputs
+
+    $resultado_pg = mysqli_query($conection, "SELECT COUNT(id_input) as num_result from inputs where id_user = $id");
+    $row_pg = mysqli_fetch_assoc($resultado_pg);
+
+    //Qntd de paginas
+    $quantidade_pg = ceil($row_pg['num_result'] / 12);
+
+    $pagina = $quantidade_pg;
     $qntd_result_pg = filter_input(INPUT_POST, 'qntd_result_pg', FILTER_SANITIZE_NUMBER_INT);
     //calcular o inicio visualização
     $inicio = ($pagina * $qntd_result_pg) - $qntd_result_pg;
@@ -24,13 +32,6 @@
         echo $row['hashrate'] . " Mh/s";
         echo "</div>";
     }
-    //Paginação - Somar a quantidade de inputs
-
-    $resultado_pg = mysqli_query($conection, "SELECT COUNT(id_input) as num_result from inputs where id_user = $id");
-    $row_pg = mysqli_fetch_assoc($resultado_pg);
-
-    //Qntd de paginas
-    $quantidade_pg = ceil($row_pg['num_result'] / 12);
 
     //Limitar o link antes e depois
     $max_links = 1;
