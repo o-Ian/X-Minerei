@@ -992,7 +992,9 @@ button {
 #infos_gpu div:last-child{
     margin-bottom: 0px;
 }
-
+.tarifa-modal-box{
+    font-size: 16px;
+}
 .form-gpu_update{
     text-align: center;
     width: 130px;
@@ -1029,6 +1031,24 @@ button {
     margin: 15px 0 15px 6px;
     outline: none;
 }
+.form-gpu_update3:focus{
+    border: 2px solid #37355c;
+    box-shadow: 1px 1px 5px #000000;
+}
+.form-gpu_update3{
+    text-align: center;
+    width: 60px;
+    height: 35px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #d3d3d3;
+    background: #151423;
+    background-clip:padding-box;
+    border-radius:.25rem;
+    border: 1px solid #37355c;
+    margin: 15px 0 15px 6px;
+    outline: none;
+}
 .att-qntd-modal-box{
     width: 50px;
     height: 30px;
@@ -1046,6 +1066,14 @@ button {
     margin-right: 5px;
     margin-left: 8px;
 }
+.input-group-addon-preco2{
+    color: #fff;
+    font-size: 12px;
+    background: #1D1923;
+    border-radius: 10px;
+    padding: 7px;
+    margin-left: 8px;
+}
 .label-device{
     margin-right: 6px;
 }
@@ -1061,6 +1089,37 @@ button {
 .img-excluir:hover{
     transform: scale(1.1);
 }
+.linha-conteudo_gpu{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+/*
+Personalização do scroll
+*/
+::-webkit-scrollbar {
+    width: 0.7vw;
+    height: 0.7vw;
+    }
+::-webkit-scrollbar-track {
+transition: ease 0.2s all;
+}
+::-webkit-scrollbar-track:hover{
+    background:rgb(27, 27, 27);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9e9e9e;
+    border-radius: 10px;
+    }
+
+::-webkit-scrollbar-thumb:hover {
+    background: #797979;
+    }
+
+
+
 /**}
 @media screen and (max-width: 900px){
     .box-potencia{

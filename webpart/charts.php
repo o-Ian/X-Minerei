@@ -15,9 +15,7 @@ include_once('ur_logged.php');
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./img/favicon.png">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
 
     <script 
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -86,7 +84,7 @@ include_once('ur_logged.php');
                 <section class="boxs">
                     <div class="box-itens">
                         <label for="" class="box-hashrate-title">Qual seu hashrate?</label>
-                        <input type="number" required name="hashrate" id="hashrate_adiciona_gpu" class="box-hashrate-input" min="0.01"placeholder="00.00" step="any">
+                        <input required type="number" required name="hashrate" id="hashrate_adiciona_gpu" class="box-hashrate-input" min="0.01"placeholder="00.00" step="any">
                         <span class="input-group-addon">Mh/s</span>
                     </div>
                     <div class="box-itens2">
@@ -194,12 +192,12 @@ include_once('ur_logged.php');
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-    <form action="update_gpu.php" method="POST" class="form_update"> 
+    <form class="form_update" id ="modal-modal"> 
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fechar">X</span>
             </button>
-            <span id = "infos_gpu">
+            <span id = "infos_gpu"></span>
               
-        </form>
+    </form>
     </div>
   </div>
 </div>
@@ -256,6 +254,8 @@ include_once('ur_logged.php');
     <script src="adiciona_gpu-ajax.js"></script>
     <script src="js/visao_geral-ajax.js"></script>
     <script src="js/excluir-gpu.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
 
 </body>
 </html>

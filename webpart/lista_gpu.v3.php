@@ -29,7 +29,10 @@
         $potencia_w = $row['potencia_w'];
 
         echo "<div class ='devices_styles animation_devices'>";
-        echo "<div class = 'qtnd'>" . $row['qntd'] . "<br>" . "</div>";
+        echo "<div class = 'linha-conteudo_gpu'>  
+        <div>" . $row['qntd'] . "<br>" . "</div>
+        <div>" . $row['potencia_w'] .  "W<br>" . "</div>
+        </div>";
         echo  "<a data-idinput = '$id_input' data-potencia_w = '$potencia_w' data-qntd = '$qntd' data-hashrate = '$hashrate' data-preco = '$preco' class='excluir'><img src='img/trash.png' class = 'img-excluir' alt='' srcset=''> </a>";
         echo  "<a><img src='img/caneta-roller.png' class = 'view-data' id=$id_input alt='' srcset='' data-toggle='modal' data-target='.bd-example-modal-sm'></a>";
         echo "<div class = 'nome_GPU'>" . $row['GPU'] . "<br>" . "</div>";

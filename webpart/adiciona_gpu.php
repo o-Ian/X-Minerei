@@ -19,7 +19,7 @@
 
     $result = mysqli_query($conection, 
     "INSERT INTO inputs(id_user, GPU, qntd, hashrate, potencia_w, tarifa_energia_real, preco) VALUES ('$id', '$GPU',' $GPU_qntd', '$hashrate',' $potencia_w', '$tarifa_energia', '$preco_GPU')");
-    
+
     // Catching hashrateMhs_total, potencia_w_total, preco_total
     $busca = "SELECT * from usuarios_total where id = '$id'";
     $result_usuarios_total = mysqli_query($conection, $busca);
