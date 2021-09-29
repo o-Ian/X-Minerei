@@ -1,7 +1,4 @@
-<?php
-include_once('ur_logged.php');
-//include_once('data-manipulation.php');
-?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -127,26 +124,26 @@ include_once('ur_logged.php');
             <div class="box-itens-rigth1">
                 <div class="linha-box-rigth">
                     <img src="img/lucro-icon.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth" id= "avg_profit_day">R$ <?=$_SESSION['avg_profit_day']?></span>
+                    <span class="input-group-addon-box-rigth" id= "avg_profit_day">R$ 0,34<!--<?=$_SESSION['avg_profit_day']?>--></span>
                 </div>
                 <label for="" class="box-hashrate-title-rigth">Lucro médio/dia</label>
             </div>
             <div class="box-itens-rigth2">
                 <div class="linha-box-rigth">
                     <img src="img/baixo-custo 1.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth" id = "avg_cost_day">R$ <?=$_SESSION['avg_cost_day'];?></span>
+                    <span class="input-group-addon-box-rigth" id = "avg_cost_day">R$ 0,34<!--<?=$_SESSION['avg_cost_day'];?>--></span>
                 </div>
                 <label for="" class="box-hashrate-title-rigth">Gastos médio/dia</label>            
             </div>
             <div class="box-itens-rigth3">
                 <div class="linha-box-rigth">
                     <img src="img/money-bag.png" alt="" class="img-position-box-rigth">
-                    <span class="input-group-addon-box-rigth" id = "avg_revenue_day">R$ <?=$_SESSION['avg_revenue_day'];?></span>
+                    <span class="input-group-addon-box-rigth" id = "avg_revenue_day">R$ 0,34<!--<?=$_SESSION['avg_revenue_day'];?>--></span>
                 </div>
                 <label for="" class="box-hashrate-title-rigth">Faturamento<br>médio/dia</label>            
             </div>
             <div class="box-itens-rigth4">
-                <label for="" class="box-hashrate-title-rigth4" id="avg_payItself_day">Se paga em <?=$_SESSION['avg_payItself_day'];?> meses</label>            
+                <label for="" class="box-hashrate-title-rigth4" id="avg_payItself_day">Se paga em 12,2<!--<?=$_SESSION['avg_payItself_day'];?>--> meses</label>            
             </div>
         </section>
         <div class="indicadores">
@@ -156,15 +153,15 @@ include_once('ur_logged.php');
             <div class="box-indicators">
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Gastos/<br>Faturamento</h4>
-                    <h2 class="box-indicators-porc" id ="cost_revenue_indicator"><?=$_SESSION['cost_revenue_indicator'];?>%</h2>
+                    <h2 class="box-indicators-porc" id ="cost_revenue_indicator">34<!--<?=$_SESSION['cost_revenue_indicator'];?>-->%</h2>
                 </div>
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Lucro/<br>Faturamento</h4>
-                    <h2 class="box-indicators-porc" id = "profit_revenue_indicator"><?=$_SESSION['profit_revenue_indicator'];?>%</h2>
+                    <h2 class="box-indicators-porc" id = "profit_revenue_indicator">34<!--<?=$_SESSION['profit_revenue_indicator'];?>-->%</h2>
                 </div>
                 <div class="box-indicators1">
                     <h4 class="box-indicators-title">Retorno/<br>Custo das peças</h4>
-                    <h2 class="box-indicators-porc" id = "gpuPrice_return_indicator"><?=$_SESSION['gpuPrice_return_indicator'];?>x</h2>
+                    <h2 class="box-indicators-porc" id = "gpuPrice_return_indicator">1.45<!--<?=$_SESSION['gpuPrice_return_indicator'];?>-->x</h2>
                 </div>
             </div>
         </div>
@@ -227,7 +224,13 @@ include_once('ur_logged.php');
                 
     </script>
     <script>
-        var qntd_result_pg = 12; // Quantidade de registros por página
+        if(window.screen.width <= 1590){
+            var qntd_result_pg = 10; // Quantidade de registros por página
+            
+        }else{
+            var qntd_result_pg = 12; // Quantidade de registros por página
+        }
+        
         var pagina = 1; // Inicia pela página 1
         $(document).ready(function (){
             listar_usuario(pagina, qntd_result_pg)
