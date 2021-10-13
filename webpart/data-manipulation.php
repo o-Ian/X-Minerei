@@ -131,6 +131,13 @@ $gpuPrice_return_indicator = array_sum($Revenue_42_months)/$total_cost_GPU;
 $gpuPrice_return_indicator = number_format($gpuPrice_return_indicator, 2);
 
 }
+//Verifing if null data exists
+if(empty($Date_UTC)){
+    $Date_UTC = 0;
+}
+if(empty($EnergyCost_Revenue)){
+    $EnergyCost_Revenue = 0;
+}
 
 // Putting all data in an array
 $data_manipulation = array();

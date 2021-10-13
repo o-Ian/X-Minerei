@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>X-Minerei</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -13,16 +14,24 @@
     <link rel="shortcut icon" href="./img/favicon.png">
 </head>
 <body>
-    <div class="center" >
+    <?php session_start(); include_once('menu.php'); ?>
+        <!-- <div class="center" >
         <div class="superior">
-            <a href="#" class="logo-all">
+            <a href="index.php" class="logo-all">
                 <i class="logo"></i>
             </a>
-            <ul class="menu">
-                <li class="menu-li"><a href="#" class="menu__link">Início</a></li>
+            
+            <nav id="nav">
+            <button id="btn-mobile">Menu
+
+            <span id="hamburguer"></span>
+            </button>
+
+
+            <ul class="menu" id = "menu">
+                <li class="menu-li"><a href="index.php" class="menu__link">Início</a></li>
                 <li class="menu-li"><a href="charts.php" class="menu__link">Dashboard</a></li>
                 <?php
-                session_start();
                 if(!isset($_SESSION['email'])):
               ?>
                 <li class="menu-li2"><a href="login.php" class="bt_signin">Login</a></li>
@@ -37,15 +46,17 @@
                     <ul>
                         <li class="dropdown-itens"><img src="img/logout.png" alt="" class="dropdown-images"><a href="logout.php" class="dropdown-menu__link">Sair</a></li>
                         <li class="dropdown-itens"><a href="#" class="dropdown-menu__link">Entrar</a></li>
-                        <li class="dropdown-itens"><a href="#" class="dropdown-menu__link">Manter-se</a></li>
+                        
                     </ul>
                 </li>
               <?php
                 endif;
               ?>
             </ul>
+            </nav>
         </div>
-    </div>
+    </div> -->
+
         <div class="img-right">
             <img class="image1" src="./img/background2.png">
             <div class="image2">

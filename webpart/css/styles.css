@@ -71,6 +71,9 @@ ol{
     padding-bottom: 20px;
     z-index: 3;
     background: #121220;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .menu{
     font-family: 'Montserrat', sans-serif;
@@ -101,10 +104,16 @@ ol{
     border-radius: 5px;
     padding: 10px;
     visibility: hidden;
+    transition: .1s;
+    height: 0;
+    overflow-y: hidden;
    
 }
 .menu li:hover ul{
     visibility: visible;
+    height: 80%;
+    overflow-y: visible;
+    width: 100px;
 }   
 .menu-li2{
     float: left;
@@ -413,6 +422,12 @@ ol{
 
 }
 
+/* Menu hamburguer */
+#btn-mobile{
+    display: none;
+    
+}
+
 @media screen and (min-width: 1838px){
     .image2{
         margin-left: 14%;
@@ -490,20 +505,117 @@ ol{
         
     }
 }
+
+
+@media screen and (max-width: 1263px){
+    .menu-li{
+        margin: 0 35px;
+        margin-left: 70px;
+    }
+    .menu-li2{
+        margin: 0 40px;
+        margin-right: -15px;
+    }
+}
+
 @media screen and (max-width: 1210px){
     .texto2{
         padding-left: 30px;
         padding-top: 10px;
     }
 }
-@media screen and (max-width: 1138px){
+
+/* Menu hamburguer */
+@media only screen and (max-width: 1012px){
     .menu-li{
-        margin: 0 35px;
+        margin: 4vw 0 4vw 0;
+        border-bottom: 2px solid #272fa01e;
+        padding: 0.6rem 0;
+        /* background: #30305246; */
     }
+    
     .menu-li2{
-        margin: 0 40px;
+        margin: 4vw 0 4vw 0;
+        border-bottom: 2px solid #272fa01e;
+        padding: 0.6rem 0;
+        /* background: #30305246; */
     }
+     
+    #btn-mobile{
+        color: #fff;
+        display: flex;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        gap: .5rem;
+
+    }
+    #menu{
+        display: flex;
+        position: absolute;
+        width: 100%;
+        top: 90px;
+        left: 10%;
+        background: #1b1b30;
+        flex-direction: column;
+        height: 0px;
+        transition: .4s;
+        text-align: center;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+    #hamburguer{
+        display: block;
+        color: #fff;
+        border-top: 2px solid;
+        width: 20px;
+    }
+    #hamburguer::after, #hamburguer::before{
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        transition: .3s;
+        position: relative;
+    }
+    .logo{
+        margin-left: 7vw;
+    }
+    #nav.active #menu{
+        height: calc(100vh - 70px);
+        visibility: visible;
+        overflow-y: auto;
+        
+    }
+    #nav.active #hamburguer{
+        border-top-color: transparent;
+
+    }
+    #nav.active #hamburguer::before{
+        transform: rotate(135deg);                
+    }
+    #nav.active #hamburguer::after{
+        top: -7px;
+        transform: rotate(-135deg);  
+        
+    }
+    .bt_signin{
+        margin-left: 0;
+    }
+    .menu ul{
+        margin-left: 50%;
+    }
+    .menu li:hover ul{
+        overflow: hidden;
+        height: 80px;
+        
+    } 
 }
+
 @media screen and (max-width: 1110px){
     .icon-wrapping{
         width: 35%;
@@ -525,6 +637,7 @@ ol{
     }
     
 }
+
 @media screen and (max-width: 983px){
     .texto{
         text-align: center;
@@ -550,10 +663,7 @@ ol{
     }
 }
 @media screen and (max-width: 870px){
-    .superior{
-        position: relative;
-        background: #00e9c200;
-    }
+   
 }
 @media screen and (max-width: 776px){
     .bt-baixo-position{
@@ -584,6 +694,7 @@ ol{
         
     }
 }
+
 @media screen and (max-width: 586px){
       .uni-bt{
         padding: 20px 10px;
