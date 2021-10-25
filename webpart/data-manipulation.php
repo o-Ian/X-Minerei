@@ -69,18 +69,10 @@ while($row = mysqli_fetch_assoc($result)){
     array_push($Profit_day_BRL, $calculo_profit_day);
     array_push($Profit_month_BRL, $calculo_profit_day * 30);
     array_push($EnergyCost_Revenue, number_format($calculo_energy_cost_revenue, 2));
-    $calculo_gpuprice = $total_cost_GPU * $row['multiple_gpuPrice'];
 
     if(array_key_exists(775, $GPU_Price)){
-        if ($calculo_gpuprice == 0){
-            $GPU_Price_unit = $total_cost_GPU * $row['Difficulty_LastDifficulty'];
-            array_push($GPU_Price, $GPU_Price_unit . "<br>");
-            
-        }
-        else if($calculo_gpuprice != 0){
-            $GPU_Price_unit = $calculo_gpuprice;
-            array_push($GPU_Price, $GPU_Price_unit . "<br>");
-        }
+        $GPU_Price_unit = $total_cost_GPU * $row['Difficulty_LastDifficulty'];
+        array_push($GPU_Price, $GPU_Price_unit . "<br>");
     }
     else{
         $GPU_Price_unit = $total_cost_GPU_position775 * $row['inflacao'];
