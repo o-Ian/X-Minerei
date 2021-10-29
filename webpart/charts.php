@@ -26,6 +26,10 @@ include_once('ur_logged.php');
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
+    <div class="loader">
+        <div></div>
+    </div>
+    <div class="content">
     <?php include_once('menu.php')?>
     <!-- <div class="center">
         <div class="superior">
@@ -129,6 +133,9 @@ include_once('ur_logged.php');
             <div class="box-itens-rigth1">
                 <div class="linha-box-rigth">
                     <img src="img/lucro-icon.png" alt="" class="img-position-box-rigth">
+                    <div class="loader">
+                        <div></div>
+                    </div>
                     <span class="input-group-addon-box-rigth" id= "avg_profit_day">R$ <?=$_SESSION['avg_profit_day']?></span>
                 </div>
                 <label for="" class="box-hashrate-title-rigth">Lucro médio/dia</label>
@@ -203,6 +210,7 @@ include_once('ur_logged.php');
     </div>
   </div>
 </div>
+</div>
 
     <script>
         $(document).ready(function (){
@@ -256,16 +264,32 @@ include_once('ur_logged.php');
         
     </script>
     
-
+    <script>
+        $(window).on('load', function(){
+            $('.loader').fadeOut(5)
+            $('.content').fadeIn(5)
+        })  
+        profit_day = document.getElementById('avg_profit_day')
+        $('#avg_profit_day').on('load', function(){
+            console.log('OPA TÁ CARREGANDO O PROFIT DAY')
+        })  
+    </script>
     <script src="js/selectgpu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <?php include_once('js/chart.php'); ?>
+    <script src="js/notify.js"></script>
+    <script>
+        $.notify.defaults({position: "right bottom"})
+    </script>
+    <script>
+        $('#form_adiciona_pgu').submit(function(e){
+            console.log('O FORMS FOI ACIONADO')
+        })
+    </script>
     <script src="adiciona_gpu-ajax.js"></script>
     <script src="js/visao_geral-ajax.js"></script>
     <script src="js/excluir-gpu.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-
 </body>
 </html>

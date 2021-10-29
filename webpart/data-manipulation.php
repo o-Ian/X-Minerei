@@ -87,6 +87,7 @@ $avg_profit_day = number_format($avg_profit_day, 2);
 $avg_profit_day = str_replace(',', '', $avg_profit_day);
 $avg_profit_day = str_replace('.', ',', $avg_profit_day);
 
+
 // Making cost day average of the past 6 months
 $avg_cost_day_list = array_slice($Cost_day_BRL, -181, 181);
 $avg_cost_day = array_sum($avg_cost_day_list)/count($avg_cost_day_list);
@@ -100,6 +101,7 @@ $avg_revenue_day = array_sum($avg_revenue_day_list)/count($avg_revenue_day_list)
 $avg_revenue_day = number_format($avg_revenue_day, 2);
 $avg_revenue_day = str_replace(',', '', $avg_revenue_day);
 $avg_revenue_day = str_replace('.', ',', $avg_revenue_day);
+
 
 // Making pay itself month average of the past 3 months
 $avg_payItself_day_list = array_slice($Pays_itself_months, -92, 92);
@@ -132,6 +134,8 @@ if(empty($EnergyCost_Revenue)){
 }
 
 // Putting all data in an array
+
+
 $data_manipulation = array();
 $data_manipulation['avg_profit_day'] = $avg_profit_day;
 $data_manipulation['avg_cost_day'] = $avg_cost_day;
@@ -153,7 +157,8 @@ $_SESSION['profit_revenue_indicator'] = $profit_revenue_indicator;
 $_SESSION['gpuPrice_return_indicator'] = $gpuPrice_return_indicator;
 $_SESSION['Date_UTC'] = json_encode($Date_UTC);
 $_SESSION['EnergyCost_Revenue'] = json_encode($EnergyCost_Revenue);
-    
+
+
 echo json_encode($data_manipulation);
 
 ?>

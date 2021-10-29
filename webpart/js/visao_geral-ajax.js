@@ -1,6 +1,7 @@
     
     $('#form_adiciona_pgu').submit(function(e){   
     $.post('data-manipulation.php', function(retorna){
+        console.log(retorna)
         obj_retorna = JSON.parse(retorna)
         
         

@@ -766,6 +766,7 @@ ol{
         padding-left: 0;
     }
 }
+}
 
 @media screen and (max-width: 388px){
     .uni-bt{
@@ -781,3 +782,4 @@ ol{
     .menu-li2{
         margin-bottom: 5px;
     }
+}

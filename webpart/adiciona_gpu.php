@@ -1,6 +1,6 @@
 <?php
  include_once('config.php');
-
+    if(isset($_POST['select_adiciona_gpu'])){  
     $GPU = $_POST['select_adiciona_gpu'];
     $GPU_qntd = $_POST['quantidade_adiciona_gpu']; 
     $hashrate = $_POST['hashrate_adiciona_gpu'];
@@ -48,4 +48,5 @@
     where id = '$id'");
     
   mysqli_close($conection);
+}
 ?>

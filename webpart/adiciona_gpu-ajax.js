@@ -1,5 +1,9 @@
+var c = 1
 $('#form_adiciona_pgu').submit(function(e){
+    console.log(`FOI COISADO ${c} vezes`)
+    c = c+1
     e.preventDefault()
+    /* if(c==0){ */
 
     let form_adiciona_pgu = document.querySelector('#form_adiciona_pgu')
     let quantidade_adiciona_gpu = document.querySelector('#quantidade_adiciona_gpu')
@@ -26,6 +30,8 @@ $('#form_adiciona_pgu').submit(function(e){
             select_adiciona_gpu: select_adiciona_gpu.options[select_adiciona_gpu.selectedIndex].value
         }
     }).done(function(data){
+        console.log('ADICIONOU!!')
+        $.notify("Peça adicionada com sucesso!", "success")
         $('#quantidade_adiciona_gpu').val('1')
         $('#hashrate_adiciona_gpu').val('')
         $('#gpu').val('default').select2()
@@ -34,4 +40,6 @@ $('#form_adiciona_pgu').submit(function(e){
         $('#preco_gpu_adiciona_pgu').val('')      
 
     })
+    /* c = c+1
+} */
 })  

@@ -1,4 +1,5 @@
 $(document).on('click', '.excluir',function(){
+    console.log('ALOALOALOALOALO')
     var id_gpu = $(this).attr("data-idinput");
     var qntd = $(this).attr("data-qntd");
     var hashrate = $(this).attr("data-hashrate");
@@ -26,6 +27,9 @@ $(document).on('click', '.excluir',function(){
             potencia_w: potencia_w           
         }
     }).done(function(data){
+        $.notify("Peça excluída com sucesso!", "info")
+        console.log('ESTOY AQUIII')
+       //                    $.notify("Peça excluída com sucesso!", "success")
         //Atualizar conteúdo das peças
         var qntd_result_pg = 12; // Quantidade de registros por página
         var pagina = 1; // Inicia pela página 1

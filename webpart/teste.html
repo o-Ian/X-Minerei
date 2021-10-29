@@ -1,234 +1,29 @@
-<?php
-include_once('ur_logged.php');
-//include_once('data-manipulation.php');
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráficos - X-Minerei</title>
-    <link rel="stylesheet" href="css/charts.css">
+    <title>Teste</title>
+    <script 
+    src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+</script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./img/favicon.png">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-
-    <script 
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="css/select2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="css/charts.css">
 </head>
-<body>
-    <div class="center">
-        <div class="superior">
-            <a href="index.php" class="logo-all">
-                <i class="logo"></i>
-            </a>
-            <ul class="menu">
-                <li class="menu-li"><a href="index.php" class="menu__link">Início</a></li>
-                <li class="menu-li"><a href="#" class="menu__link">Dashboard</a></li>
-                <li class="menu-li"><a href="#" class="menu__link"><img src="img/user (1).png" alt="" class="dropdown-main-image"></a>
-                    <ul>
-                        <li class="dropdown-itens"><img src="img/logout.png" alt="" class="dropdown-images"><a href="logout.php" class="dropdown-menu__link">Sair</a></li>
-                        <li class="dropdown-itens"><a href="#" class="dropdown-menu__link">Entrar</a></li>
-                        <li class="dropdown-itens"><a href="#" class="dropdown-menu__link">Manter-se</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="menu-lado">
-        <ol>
-            <li><a href="#"><img src="./img/input.png" alt="" class="butao-atual"></a></li>
-            <li><a href="#"><img src="./img/grafico-de-barras.png" alt="" class="butao"></a></li>
-        </ol>
-    </div>
+<body >
+     <button class="button">TESTE</button>
     
-    <div class="menu-esquerdo">
-        <div class="box-cima">
-            <h2 class="titulo">Coloque suas informações!</h2>
-            <p class="box-cima-desc">Preencha cada peça que você tem e tenha acesso aos dados.</p>
-        </div>
-        <div class="inputs">
-            <form action="adiciona_gpu.php" method="POST" id = "form_adiciona_pgu">
-                <div class="linha-input">
-                    <select id="gpu" required style= "width: 280px" name="GPU">
 
-                    </select>
-                    <input type="button" value="MUDAR" id="mudar">
-                    <div class="quantidade">
-                        <h4 class="box-quantidade-title" >Quantidade</h4>
-                        <input type="number" name="GPU_qntd" id="quantidade_adiciona_gpu" class="box-quantidade" value="1" required>
-                    </div>
-                </div>
-                <section class="boxs">
-                    <div class="box-itens">
-                        <label for="" class="box-hashrate-title">Qual seu hashrate?</label>
-                        <input type="number" required name="hashrate" id="hashrate_adiciona_gpu" class="box-hashrate-input" min="0.01"placeholder="00.00" step="any">
-                        <span class="input-group-addon">Mh/s</span>
-                    </div>
-                    <div class="box-itens2">
-                        <label for="" class="box-hashrate-title">Qual a potência?</label>
-                        <input type="number" required name="potencia_w" id="potencia_adiciona_gpu" class="box-hashrate-input" min="0.01" placeholder="00.00" step="any">
-                        <span class="input-group-addon">W</span>
-                    </div>
-                    <div class="break"></div>
-                    <div class="box-itens3">
-                        <label for="" class="box-hashrate-title">Quanto é sua tarifa<br>de energia?</label>
-                        <span class="input-group-addon-esquerda">R$</span>
-                        <input type="number" required name="tarifa_energia" id="tarifa_adiciona_gpu" min="0.01" class="box-hashrate-input" placeholder="00.00" step="any">
-                    </div>
-                    <div class="box-itens4">
-                        <label for="" class="box-hashrate-title">Qual o preço da peça?</label>
-                        <span class="input-group-addon-esquerda">R$</span>
-                        <input type="number" required name="preco_GPU" min="1" id="preco_gpu_adiciona_pgu" class="box-hashrate-input" placeholder="00.00" step="any">
-                    </div>
-                    <div class="break"></div>
-                    <div>
-                        <button type="submit" id = "submit2" class="input-button" name="submit2"><img src="img/Stroke 3.png" alt="" class="img-button"> Adicionar</button>
-                    </div>
-                </section>
-                
+    <script src="js/notify.js"></script>
     <script>
-        $(document).ready(function (){
-            $(document).on('click', '.view-data', function(){
-                           
-                
-                var id_input = $(this).attr("id");
-                // Verificar se há valor no id
-                if(id_input !== ''){
-                    var dados = {
-                        id_input: id_input
-                    }
-                    
-                    $.post('visualizar.php', dados, function(retorna){
-                        // Carregar o conteúdo para o usuário
-                        $('#infos_gpu').html(retorna)
-                        $('#select_gpu_update').select2({
-                            width: '160px'
-                        });
-                    })
-                }
-            })
+        $(".button").click(function(){
+            console.log("TESTE")
+            $.notify.defaults({position: "right bottom"})
+            $.notify("Peça excluída com sucesso!", "success")
         })
-                
     </script>
-    <script>
-        var qntd_result_pg = 12; // Quantidade de registros por página
-        var pagina = 1; // Inicia pela página 1
-        $(document).ready(function (){
-            listar_usuario(pagina, qntd_result_pg)
-        })
-
-        function listar_usuario(pagina, qntd_result_pg){
-            var dados = {
-                qntd_result_pg: qntd_result_pg,
-                pagina: pagina
-            }
-            $.post('listar_gpu.php', dados, function(retorna){
-                // Substitui o valor no seletor id = "conteudo"
-                $('#conteudo').html(retorna)
-            })
-        }
-        
-    </script>
-    <script>
-        $(document).ready(function() {
-    $('#gpu').select2({
-        "results": [
-    { 
-      "text": "Group 1", 
-      "children" : [
-        {
-            "id": 1,
-            "text": "Option 1.1"
-        },
-        {
-            "id": 2,
-            "text": "Option 1.2"
-        }
-      ]
-    },
-    { 
-      "text": "Group 2", 
-      "children" : [
-        {
-            "id": 3,
-            "text": "Option 2.1"
-        },
-        {
-            "id": 4,
-            "text": "Option 2.2"
-        }
-      ]
-    }
-  ],
-  "pagination": {
-    "more": true
-  }
-    });
-});
-        $('#mudar').click(function() {
-
-    $(document).ready(function() {
-    $('#gpu').select2({
-        
-    });
-});
-
-});
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <?php include_once('js/chart.php') ?>
-    <script src="adiciona_gpu-ajax.js"></script>
-    <script>
-        /*let form_adiciona_pgu = document.querySelector('#form_adiciona_pgu')
-        let quantidade_adiciona_gpu = document.querySelector('#quantidade_adiciona_gpu')
-        let hashrate_adiciona_gpu = document.querySelector('#hashrate_adiciona_gpu')
-        let potencia_adiciona_gpu = document.querySelector('#potencia_adiciona_gpu')
-        let tarifa_adiciona_gpu = document.querySelector('#tarifa_adiciona_gpu')
-        let preco_gpu_adiciona_pgu = document.querySelector('#preco_gpu_adiciona_pgu')
-        let select_adiciona_gpu = document.getElementById('gpu')
-
-        form_adiciona_pgu.addEventListener('submit', function(event){
-            event.preventDefault()
-            
-            let dados = {
-                form_adiciona_pgu: form_adiciona_pgu.value,
-                quantidade_adiciona_gpu: quantidade_adiciona_gpu.value,
-                hashrate_adiciona_gpu: hashrate_adiciona_gpu.value,
-                potencia_adiciona_gpu: potencia_adiciona_gpu.value,
-                tarifa_adiciona_gpu: tarifa_adiciona_gpu.value,
-                preco_gpu_adiciona_pgu: preco_gpu_adiciona_pgu.value,
-                select_adiciona_gpu: select_adiciona_gpu.options[select_adiciona_gpu.selectedIndex].text
-
-            }
-            console.log(dados)
- 
-        })
-        
-
-
-*/
-    </script>
-        <script>
-        $('#submit2').click(function() {
-
-        $('#gpu').val('default');
-
-        });
-        </script>
-
 </body>
 </html>
