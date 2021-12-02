@@ -8,7 +8,7 @@ session_start();
     $conection = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
 
     if (mysqli_ping($conection)) {
-        printf ("Our connection is ok!\n");
+        //printf ("Our connection is ok!\n");
     } else {
         printf ("Error: %s\n", mysqli_error($link));
     }
